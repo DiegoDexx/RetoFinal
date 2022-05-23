@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 /**
  *
  * @author Diego
@@ -56,6 +58,16 @@ public class Empresa {
     public void setNombre_empresa(String nombre_empresa) {
         this.nombre_empresa = nombre_empresa;
     }
+
+    public String getDomiclio() {
+        return domiclio;
+    }
+
+    public void setDomiclio(String domiclio) {
+        this.domiclio = domiclio;
+    }
+    
+    
 
     public String getConvenio() {
         return convenio;

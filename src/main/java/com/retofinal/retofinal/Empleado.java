@@ -15,66 +15,65 @@ import javax.persistence.Table;
  *
  * @author Diego
  */
-
 @Entity
-@Table(name="Empleado")
+@Table(name = "empleado")
 public class Empleado {
-    
-    public Empleado() { }
-    
-     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-     
-    Long IDEmpleado;
-     
-     @Column(name="nombre_emp")
-     private String nombre_emp;
-     
-     @Column(name="apellido1_emp")
-     private String apellido1emp;
-     
-     @Column(name="apellido2_emp")
-     private String apellido2emp;
-     
-     @Column(name="nif_empleado")
-     private String nif;
-     
-     @Column(name="nus_empleado")
-     private String nus;
-     
-     @Column(name="tipo_contrato")
-     private String tipo;
+
+    public Empleado() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "apellido1")
+    private String apellido1;
+
+    @Column(name = "apellido2")
+    private String apellido2;
+
+    @Column(name = "nif")
+    private String nif;
+
+    @Column(name = "nus")
+    private String nus;
+
+    /*@Column(name = "tipoContrato")
+    private String tipoContrato; */
 
     public Long getIDEmpleado() {
-        return IDEmpleado;
+        return id;
     }
 
     public void setIDEmpleado(Long IDEmpleado) {
-        this.IDEmpleado = IDEmpleado;
+        this.id = IDEmpleado;
     }
 
     public String getNombre_emp() {
-        return nombre_emp;
+        return nombre;
     }
 
     public void setNombre_emp(String nombre_emp) {
-        this.nombre_emp = nombre_emp;
+        this.nombre = nombre_emp;
     }
 
     public String getApellido1emp() {
-        return apellido1emp;
+        return apellido1;
     }
 
-    public void setApellido1emp(String apellido1emp) {
-        this.apellido1emp = apellido1emp;
+    public void setApellido1emp(String apellido1) {
+        this.apellido1 = apellido1;
     }
 
     public String getApellido2emp() {
-        return apellido2emp;
+        return apellido2;
     }
 
-    public void setApellido2emp(String apellido2emp) {
-        this.apellido2emp = apellido2emp;
+    public void setApellido2emp(String apellido2) {
+        this.apellido2 = apellido2;
     }
 
     public String getNif() {
@@ -93,15 +92,15 @@ public class Empleado {
         this.nus = nus;
     }
 
-    public String getTipo() {
-        return tipo;
+   /* public String getTipo() {
+        return tipoContrato;
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        this.tipoContrato = tipo; */
+    
+    
     }
-     
-     
-     
-     
-}
+    
+    
+

@@ -111,8 +111,24 @@
             </grupo>
             <complementos>
                 <complemento>
-                    <nombre></nombre>
-                    <obtencion></obtencion>
+                    <nombre>Ayuda Especial</nombre>
+                    <cantidad>117.25</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Transporte</nombre>
+                    <cantidad>2.43</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Teletrabajo</nombre>
+                    <cantidad>2.43</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta Media</nombre>
+                    <cantidad>18.82</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta completa</nombre>
+                    <cantidad>55.37</cantidad>
                 </complemento>
             </complementos>
         </tabla_salarial>
@@ -215,8 +231,24 @@
             </grupo>
             <complementos>
                 <complemento>
-                    <nombre></nombre>
-                    <obtencion></obtencion>
+                    <nombre>Ayuda Especial</nombre>
+                    <cantidad>119.60</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Transporte</nombre>
+                    <cantidad>2.49</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Teletrabajo</nombre>
+                    <cantidad>2.49</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta Media</nombre>
+                    <cantidad>19.20</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta completa</nombre>
+                    <cantidad>56.48</cantidad>
                 </complemento>
             </complementos>
         </tabla_salarial>
@@ -318,11 +350,27 @@
                 <salario_base>13837.32</salario_base>
             </grupo>
             <complementos>
-            <complemento>
-                <nombre></nombre>
-                <obtencion></obtencion>
-            </complemento>
-        </complementos>
+                <complemento>
+                    <nombre>Ayuda Especial</nombre>
+                    <cantidad>122.00</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Transporte</nombre>
+                    <cantidad>2.55</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Plus Teletrabajo</nombre>
+                    <cantidad>2.54</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta Media</nombre>
+                    <cantidad>19.58</cantidad>
+                </complemento>
+                <complemento>
+                    <nombre>Dieta completa</nombre>
+                    <cantidad>57.61</cantidad>
+                </complemento>
+            </complementos>
         </tabla_salarial>
     </convenio>
     <convenio id="default">

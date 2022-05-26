@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * @author Diego
  */
 @Entity
-@Table(name="emopresa")
+@Table(name="empresa")
 public class Empresa {
     
     public Empresa() { 
@@ -28,19 +28,19 @@ public class Empresa {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
       
-       @Column(name="nombre_empresa")
-     private String nombre_empresa;
+     @Column(name="nombreempresa")
+     private String nombreempresa;
      
-     @Column(name="Domiclio")
-     private String domiclio;
+     @Column(name="Domicilio")
+     private String domicilio;
      
      @Column(name="Convenio")
      private String convenio;
      
-     @Column(name="cif")
+     @Column(name="Cif")
      private String cif;
      
-     @Column(name="ccc")
+     @Column(name="Ccc")
      private String ccc;
 
     public Long getId() {
@@ -51,20 +51,20 @@ public class Empresa {
         this.id = id;
     }
 
-    public String getNombre_empresa() {
-        return nombre_empresa;
+    public String getnombreempresa() {
+        return nombreempresa;
     }
 
-    public void setNombre_empresa(String nombre_empresa) {
-        this.nombre_empresa = nombre_empresa;
+    public void setnombreEmp(String nombreEmpresa) {
+        this.nombreempresa= nombreEmpresa;
     }
 
-    public String getDomiclio() {
-        return domiclio;
+    public String getDomicilio() {
+        return domicilio;
     }
 
-    public void setDomiclio(String domiclio) {
-        this.domiclio = domiclio;
+    public void setDomicilio(String domiclio) {
+        this.domicilio = domiclio;
     }
     
     

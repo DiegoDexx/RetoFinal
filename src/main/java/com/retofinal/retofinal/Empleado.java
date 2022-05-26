@@ -25,7 +25,7 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
+    
     @Column(name = "nombre")
     private String nombre;
 
@@ -41,8 +41,18 @@ public class Empleado {
     @Column(name = "nus")
     private String nus;
 
-    /*@Column(name = "tipoContrato")
-    private String tipoContrato; */
+    @Column(name = "tipocontrato")
+    private String tipoContrato;
+    
+    @Column(name= "feciniciocont")
+    private String fechainic;
+    
+    @Column(name="fecfincontrato")
+    private String fechafinc;
+    
+  
+    
+    
 
     public Long getIDEmpleado() {
         return id;
@@ -92,12 +102,31 @@ public class Empleado {
         this.nus = nus;
     }
 
-   /* public String getTipo() {
+    public String getTipo() {
         return tipoContrato;
     }
 
     public void setTipo(String tipo) {
-        this.tipoContrato = tipo; */
+       this.tipoContrato = tipo; 
+    }
+
+    public String getFechainic() {
+        return fechainic;
+    }
+
+    public void setFechainic(String fechainic) {
+        this.fechainic = fechainic;
+    }
+
+    public String getFechafinc() {
+        return fechafinc;
+    }
+
+    public void setFechafinc(String fechafinc) {
+        this.fechafinc = fechafinc;
+    }
+    
+    
     
     
     }

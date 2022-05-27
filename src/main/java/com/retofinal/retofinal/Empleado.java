@@ -25,8 +25,8 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
-    @Column(name = "nombre")
+
+    @Column(name = "nombretrab")
     private String nombre;
 
     @Column(name = "apellido1")
@@ -43,46 +43,56 @@ public class Empleado {
 
     @Column(name = "tipocontrato")
     private String tipoContrato;
-    
-    @Column(name= "feciniciocont")
-    private String fechainic;
-    
-    @Column(name="fecfincontrato")
-    private String fechafinc;
-    
-  
-    
-    
 
-    public Long getIDEmpleado() {
+    @Column(name = "fecinicontrato")
+    private String fechainic;
+
+    @Column(name = "fecfincontrato")
+    private String fechafinc;
+
+    @Column(name = "idempresa")
+    private int idempresa;
+
+    @Column(name = "catprof")
+    private String catprof;
+
+    @Column(name = "grupocot")
+    private String grupocot;
+
+    @Column(name = "irpf")
+    private int irpf;
+
+    
+    
+    public Long getId() {
         return id;
     }
 
-    public void setIDEmpleado(Long IDEmpleado) {
-        this.id = IDEmpleado;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombre_emp() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre_emp(String nombre_emp) {
-        this.nombre = nombre_emp;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellido1emp() {
+    public String getApellido1() {
         return apellido1;
     }
 
-    public void setApellido1emp(String apellido1) {
+    public void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
     }
 
-    public String getApellido2emp() {
+    public String getApellido2() {
         return apellido2;
     }
 
-    public void setApellido2emp(String apellido2) {
+    public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
 
@@ -102,12 +112,12 @@ public class Empleado {
         this.nus = nus;
     }
 
-    public String getTipo() {
+    public String getTipoContrato() {
         return tipoContrato;
     }
 
-    public void setTipo(String tipo) {
-       this.tipoContrato = tipo; 
+    public void setTipoContrato(String tipoContrato) {
+        this.tipoContrato = tipoContrato;
     }
 
     public String getFechainic() {
@@ -125,11 +135,37 @@ public class Empleado {
     public void setFechafinc(String fechafinc) {
         this.fechafinc = fechafinc;
     }
-    
-    
-    
-    
-    }
-    
-    
 
+    public int getIdempresa() {
+        return idempresa;
+    }
+
+    public void setIdempresa(int idempresa) {
+        this.idempresa = idempresa;
+    }
+
+    public String getCatprof() {
+        return catprof;
+    }
+
+    public void setCatprof(String catprof) {
+        this.catprof = catprof;
+    }
+
+    public String getGrupocot() {
+        return grupocot;
+    }
+
+    public void setGrupocot(String grupocot) {
+        this.grupocot = grupocot;
+    }
+
+    public int getIrpf() {
+        return irpf;
+    }
+
+    public void setIrpf(int irpf) {
+        this.irpf = irpf;
+    }
+
+}

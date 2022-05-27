@@ -26,7 +26,6 @@ CREATE TABLE Empleado(
     fecfincontrato DATE, 
     idempresa INT,
     CONSTRAINT fk_empresa_empleado FOREIGN KEY (idempresa) REFERENCES Empresa (id) ON DELETE NO ACTION ON UPDATE CASCADE,
-    catprof VARCHAR(200), 
     grupocot VARCHAR(200), 
     irpf INT NOT NULL DEFAULT 2
 );
@@ -152,7 +151,7 @@ VALUES (NULL,'Abogados Lopez','Illueca 8','CONVENIO COLECTIVO PROVINCIAL DE OFIC
 ;
 
 INSERT INTO Empleado
-VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','XXX','3','4'),
-       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','XXX2','2','5'),
-       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','XXX3','7',DEFAULT)
+VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','4 2 A','4'),
+       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','3 1 B','5'),
+       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','1 1',DEFAULT)
 ;

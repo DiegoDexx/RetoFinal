@@ -21,6 +21,8 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
    
       @Override
     List<Empresa> findAll();
+    
+    
     /*
     @Override
     Optional <Empresa> findById(Long Id);

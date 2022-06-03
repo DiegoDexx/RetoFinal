@@ -19,14 +19,20 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository repository;
 
-    public void EmpleadoData(String nombre_emp, String apellido1, String apellido2, String nif, String nus) {
+    public void EmpleadoData(String nombre_emp, String apellido1, String apellido2, String nif, String nus, String tipocontrato, String fecinicontrato, String fecfincontrato, int idempresa, String grupocot, int irpf) {
 
         Empleado emp = new Empleado();
-        emp.setNombre_emp(nombre_emp);
-        emp.setApellido1emp(apellido1);
-        emp.setApellido2emp(apellido2);
+        emp.setNombre(nombre_emp);
+        emp.setApellido1(apellido1);
+        emp.setApellido2(apellido2);
         emp.setNif(nif);
         emp.setNus(nus);
+        emp.setTipoContrato(tipocontrato);
+        emp.setFechainic(fecinicontrato);
+        emp.setFechafinc(fecfincontrato);
+        emp.setIdempresa(idempresa);
+        emp.setGrupocot(grupocot);
+        emp.setIrpf(irpf);
 
         repository.save(emp);
 

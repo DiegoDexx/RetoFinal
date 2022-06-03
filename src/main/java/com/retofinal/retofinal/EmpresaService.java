@@ -42,7 +42,7 @@ public class EmpresaService {
         return Empresainfo;
     
     }
-    /*
+    
     public Empresa getEmpById(Long idempr) {
     
         Optional <Empresa> empresa = repository.findById(idempr);
@@ -54,7 +54,7 @@ public class EmpresaService {
         }
     
     }
-    
+    /*
     public List<Empresa> getEmpresaByNombreEmp(String nombreEmpr){
     
         Optional<List<Empresa>> listanombres = repository.findByNombreempresa(nombreEmpr);

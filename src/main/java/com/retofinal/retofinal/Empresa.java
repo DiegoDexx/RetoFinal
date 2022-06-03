@@ -24,25 +24,27 @@ public class Empresa {
     public Empresa() { 
     }
     
-      @Id
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
       
-     @Column(name="nombreempresa")
+     @Column(name="nomempresa")
      private String nombreempresa;
      
-     @Column(name="Domicilio")
+     @Column(name="direccion")
      private String domicilio;
      
-     @Column(name="Convenio")
+     @Column(name="convenio")
      private String convenio;
      
-     @Column(name="Cif")
+     @Column(name="cif")
      private String cif;
      
-     @Column(name="Ccc")
+     @Column(name="ccc")
      private String ccc;
 
+     
+     
     public Long getId() {
         return id;
     }
@@ -63,8 +65,8 @@ public class Empresa {
         return domicilio;
     }
 
-    public void setDomicilio(String domiclio) {
-        this.domicilio = domiclio;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
     
     

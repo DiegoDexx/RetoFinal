@@ -26,17 +26,17 @@ import org.xml.sax.SAXException;
 @RestController()
 @RequestMapping("/info")
 public class InfoController {
-    
+
     @Autowired
-    EmpresaService servicee;    
-    
-     @PostMapping("/createEmpresa")
-    public ResponseEntity<String> createEmpresa(String nombreEmpresa, String domicilio, String convenio, String cif, String ccc) { 
-    
+    EmpresaService servicee;
+
+    @PostMapping("/createEmpresa")
+    public ResponseEntity<String> createEmpresa(String nombreEmpresa, String domicilio, String convenio, String cif, String ccc) {
+
         servicee.EmpresaData(nombreEmpresa, domicilio, convenio, cif, ccc);
-        
+
         return ResponseEntity.ok().build();
-    
+
     }
     
   @GetMapping("/empresa")
@@ -55,9 +55,8 @@ public class InfoController {
 
         return ResponseEntity.ok(inf);
     }
-    
-    
- @GetMapping("/empresa/{id}")
+
+    @GetMapping("/empresa/{id}")
     public ResponseEntity<String> listaEmpresaPorId(@PathVariable("id") Long idEmpresa) {
 
         String inf2 = "";
@@ -73,11 +72,11 @@ public class InfoController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se ha encontrado ninguna empresa con ese id");
         }
-    }
 
+    }
+  
     
     @Autowired
-            
     EmpleadoService service;
      @PostMapping("/createEmpleado")
     public ResponseEntity<String> createEmpleado(String nombre, String apellido1, String apellido2, String nif, String nus, String tipocontrato, String fecinicontrato, String fecfincontrato, int idempresa, String grupocot, int irpf) {

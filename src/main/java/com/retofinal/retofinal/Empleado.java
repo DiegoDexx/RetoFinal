@@ -53,6 +53,9 @@ public class Empleado {
     @Column(name = "idempresa")
     private int idempresa;
 
+    @Column(name = "catprof")
+    private String catprof;
+
 
     @Column(name = "grupocot")
     private String grupocot;
@@ -134,6 +137,7 @@ public class Empleado {
         this.fechafinc = fechafinc;
     }
 
+
     public int getIdempresa() {
         return idempresa;
     }
@@ -161,5 +165,5 @@ public class Empleado {
 }
     
     
-    
 
+ 

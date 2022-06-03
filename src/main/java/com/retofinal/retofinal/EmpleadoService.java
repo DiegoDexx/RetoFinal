@@ -19,7 +19,7 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository repository;
 
-    public void EmpleadoData(String nombre_emp, String apellido1, String apellido2, String nif, String nus, String tipocontrato, String fecinicontrato, String fecfincontrato, int idempresa, String grupocot, int irpf) {
+     public void EmpleadoData(String nombre_emp, String apellido1, String apellido2, String nif, String nus, String tipocontrato, String fecinicontrato, String fecfincontrato, int idempresa, String grupocot, int irpf) {
 
         Empleado emp = new Empleado();
         emp.setNombre(nombre_emp);
@@ -37,6 +37,8 @@ public class EmpleadoService {
         repository.save(emp);
 
     }
+    
+
 
     public List getLista() {
         List<Empleado> listaEmpleado = repository.findAll();

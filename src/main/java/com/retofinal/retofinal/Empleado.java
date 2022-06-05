@@ -53,18 +53,13 @@ public class Empleado {
     @Column(name = "idempresa")
     private int idempresa;
 
-    @Column(name = "catprof")
-    private String catprof;
-
-
     @Column(name = "grupocot")
     private String grupocot;
 
     @Column(name = "irpf")
     private int irpf;
 
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -137,7 +132,6 @@ public class Empleado {
         this.fechafinc = fechafinc;
     }
 
-
     public int getIdempresa() {
         return idempresa;
     }
@@ -145,7 +139,6 @@ public class Empleado {
     public void setIdempresa(int idempresa) {
         this.idempresa = idempresa;
     }
-
 
     public String getGrupocot() {
         return grupocot;
@@ -162,8 +155,5 @@ public class Empleado {
     public void setIrpf(int irpf) {
         this.irpf = irpf;
     }
-}
-    
-    
 
- 
+}

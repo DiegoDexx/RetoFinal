@@ -35,27 +35,49 @@ public class NominaService {
     Empresa empr = new Empresa();
    
     
-    public Nomina getNominaInfo(Long isnomina, Long idempresa, Long idemp, String nomempleado, String direccionnom, String cifnom, String cccempresa,String fecIni, String FechaFin,
-                              double SalBase, String grupocot, String catProf, HttpServletRequest request)throws IOException, ParserConfigurationException, SAXException { 
+    public Nomina getNominaInfo(Long idnomina, Long idempleado, String nomempresanomina, String direccionempresanomina, String cifempresanomina, String cccempresanomina ,String nomtrabnomina, String niftrabnomina, String nuftrabnomina,
+                              String catTrabajadorNomina, String grupoCotizacionTrabajadorNomina, String fechaInicioNomina, String fechaFinNomina, int numeroDiasNomina, double resultadoSalarioBase,
+                              double resultadoHorasComplementarias, double resultadoHorasExtra, double resultadoHorasExtraMayor, double resultadoAyudaEspecial, double resultadoTransporte, double resultadoTeletrabajo,
+                              double resultadoDieta, double resultadoDietaMedia, double resultadoTotalDevengado, double contingenciasComunes, double porcentajeContingenciasComunes, double resultadoContingenciasComunes,
+                              double desempleo, double porcentajeDesempleo, double resultadoDesempleo, double fpTrabajador, double porcentajeFp, double resultadoFp, double horasExtraDeducciones, double porcentajeHorasExtraDeducciones,
+                              double resultadoHorasExtraDeducciones, double horasExtraMayorDeducciones, double porcentajeHorasExtraMayorDeducciones, double resultadoHorasExtramayorDeducciones, double resultadoTotalAportaciones,
+                              double irpf, int porcentajeIrpf, double resultadoIrpf, double resultadoTotalDeducir, double resultadoTotalPercibir, double resultadoRemuneracionMensual, double resultadoProrrataPagasExtra,
+                              double resultadoBaseContingenciasComunes, double porcentajeTipoEmpresa, double aportacionEmpresa, double accidenteTrabajoYEnfermedadProfesional, double porcentajeAccidenteTrabajoYEnfermedadProfesional,
+                              double resultadoAccidenteTrabajoYEnfermedadProfesional, double desempleoEmpresa, double porcentajeDesempleoEmpresa, double resultadoDesempleoEmpresa, double fp, double porcentajeFpEmpresa,
+                              double resultadoFpEmpresa, double fogasa, double porcentajeFogasa, double resultadoFogasa, double horasExtraEmpresa, double porcentajeHorasExtraEmpresa, double resultadoHorasExtraEmpresa, 
+                              double horasExtraMayorEmpresa, double porcentajeHorasExtraMayorEmpresa, double resultadoHorasExtraMayorEmpresa, double baseIrpf, double totalAportacionesEmpresa, HttpServletRequest request)throws IOException, ParserConfigurationException, SAXException { 
        
         Nomina nom = new Nomina();
-        
-        nomempleado= em.getNombre()+em.getApellido1()+em.getApellido2();
-        cifnom = em.getNif();
-        direccionnom = empr.getDomicilio();
-        cccempresa = empr.getCcc();
-        fecIni = nom.getFechaInicio();
-        FechaFin= nom.getFechaFinal();
-        grupocot = em.getGrupocot(); /*ESTO NO FUNCIONA, HAY QUE GUARDAR LOS DATOS DE EMPLEADO Y EMPRESA 
-                                        EN LOS DATOS DE LA NOMINA */
-        
-        nom.setNombreEmpleado(nomempleado);
-        nom.setCifNomina(cifnom);
-        nom.setDomicilioEmpresa(direccionnom);
-        nom.setCccnomina(cccempresa);
-        nom.setFechaInicio(fecIni);
-        nom.setFechaFinal(FechaFin);
-        nom.setGrupoCot(grupocot);
+
+        // DATOS EMPRESA //
+        nomempresanomina = empr.getnombreempresa();
+        direccionempresanomina = empr.getDomicilio();
+        cifempresanomina = empr.getCif();
+        cccempresanomina = empr.getCcc();
+
+        // DATOS TRABAJADOR //
+        nomtrabnomina= em.getNombre()+em.getApellido1()+em.getApellido2();
+        niftrabnomina = em.getNif();
+        nuftrabnomina = em.getNus();
+        /* catTrabajadorNomina = em.getCatProf();  Esto no va porque no hay un get de la categoria en el empleado*/
+        grupoCotizacionTrabajadorNomina = em.getGrupocot();
+
+        // DATOS NOMINA //
+        // PERIODO //
+        fechaInicioNomina = nom.getFechaInicioNomina();
+        fechaFinNomina = nom.getFechaFinNomina();
+        numeroDiasNomina = nom.getNumeroDiasNomina();
+
+        // DEVENGOS //
+//        resultadoSalarioBase = 
+//
+//        nom.setNombreEmpleado(nomempleado);
+//        nom.setCifNomina(cifnom);
+//        nom.setDomicilioEmpresa(direccionnom);
+//        nom.setCccnomina(cccempresa);
+//        nom.setFechaInicio(fecIni);
+//        nom.setFechaFinal(FechaFin);
+//        nom.setGrupoCot(grupocot);
       
        
         String path="C:\\Users\\MH-GAMES\\Desktop\\TrabajoRetoFinal\\";

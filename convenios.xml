@@ -15,79 +15,79 @@
             <territorio>Provincia de Alicante</territorio>
         </informacion>
         <tabla_salarial anyo="2021">
-            <grupo numero="1 1" divide=15>
+            <grupo numero="1 1" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>25344.61</salario_base>
             </grupo>
-            <grupo numero="1 2" divide=15>
+            <grupo numero="1 2" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>20275.83</salario_base>
             </grupo>
-            <grupo numero="1 3" divide=15>
+            <grupo numero="1 3" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>17741.35</salario_base>
             </grupo>
-            <grupo numero="2 1" divide=15>
+            <grupo numero="2 1" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>22663.38</salario_base>
             </grupo>
-            <grupo numero="2 2" divide=15>
+            <grupo numero="2 2" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>18131.44</salario_base>
             </grupo>
-            <grupo numero="2 3" divide=15>
+            <grupo numero="2 3" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>15864.27</salario_base>
             </grupo>
-            <grupo numero="3 1 A" divide=15>
+            <grupo numero="3 1 A" divide="15">
                 <categoria>Jefe Administracion Superior, Jefe Delineacion</categoria>
                 <salario_base>22664.11</salario_base>
             </grupo>
-            <grupo numero="3 1 B" divide=15>
+            <grupo numero="3 1 B" divide="15">
                 <categoria>Delineante proyectista</categoria>
                 <salario_base>22433.86</salario_base>
             </grupo>
-            <grupo numero="3 2" divide=15>
+            <grupo numero="3 2" divide="15">
                 <categoria>Encargado laboratorio, Jefe de Primera Administrativo , Jefe equipo informatica, Analista de informatica, programador o tecnico de sistemas y comunicaciones</categoria>
                 <salario_base>19885.40</salario_base>
             </grupo>
-            <grupo numero="3 3 A" divide=15>
+            <grupo numero="3 3 A" divide="15">
                 <categoria>Delineante de primera</categoria>
                 <salario_base>19366.96</salario_base>
             </grupo>
-            <grupo numero="3 3 B" divide=15>
+            <grupo numero="3 3 B" divide="15">
                 <categoria>Delineante de segunda</categoria>
                 <salario_base>18397.96</salario_base>
             </grupo>
-            <grupo numero="4 1" divide=15>
+            <grupo numero="4 1" divide="15">
                 <categoria>Jefe Administrativo de Segunda, Cajero con firma, programador maquinas auxiliares, administrador de test, coordinador tratamientos cuestionarios, jefe explotacion, interpretes jurados, secretarias/os de Direccion</categoria>
                 <salario_base>18033.67</salario_base>
             </grupo>
-            <grupo numero="4 2 A" divide=15>
+            <grupo numero="4 2 A" divide="15">
                 <categoria>Tecnico analista, analista de primera</categoria>
                 <salario_base>17736.28</salario_base>
             </grupo>
-            <grupo numero="4 2 B" divide=15>
+            <grupo numero="4 2 B" divide="15">
                 <categoria>Analista de segunda</categoria>
                 <salario_base>17070.36</salario_base>
             </grupo>
-            <grupo numero="4 2 C" divide=15>
+            <grupo numero="4 2 C" divide="15">
                 <categoria>Inspector entrevistador, encargado, operador tabuladores</categoria>
                 <salario_base>16806.16</salario_base>
             </grupo>
-            <grupo numero="5 1" divide=15>
+            <grupo numero="5 1" divide="15">
                 <categoria>Oficial de primera, taquigrafo, cajero sin firma, coordinador de estudios, responsable equipo encuestas, operador ordenadores 1ª, jefe de maquinas basicas, clasificador, responsable central teleoperadores</categoria>
                 <salario_base>16571.72</salario_base>
             </grupo>
-            <grupo numero="5 2 A" divide=15>
+            <grupo numero="5 2 A" divide="15">
                 <categoria>Oficial de primera en laboratorio</categoria>
                 <salario_base>16371.43</salario_base>
             </grupo>
-            <grupo numero="5 2 B" divide=15>
+            <grupo numero="5 2 B" divide="15">
                 <categoria>Oficial segunda laboratorio</categoria>
                 <salario_base>15786.05</salario_base>
             </grupo>
-            <grupo numero="5 3" divide=15>
+            <grupo numero="5 3" divide="15">
                 <categoria>Capataz</categoria>
                 <salario_base>15693.91</salario_base>
             </grupo>
@@ -95,19 +95,19 @@
                 <categoria>Oficial de segunda, perforista verificador, mecánicos/as, carpinteros/as, electricistas, lector/a de contadores</categoria>
                 <salario_base>15596.47</salario_base>
             </grupo>
-            <grupo numero="6 1" divide=15>
+            <grupo numero="6 1" divide="15">
                 <categoria>Operador de maquinas basicas, dibujante, entrevistador/encuestador, Oficial de oficios de primera, conductor, jardinero</categoria>
                 <salario_base>14621.72</salario_base>
             </grupo>
-            <grupo numero="6 2" divide=15>
+            <grupo numero="6 2" divide="15">
                 <categoria>Calcador, Conserje Mayor, Conserje ordenanza- Vigilante de noche, oficial oficios de segunda</categoria>
                 <salario_base>13939.63</salario_base>
             </grupo>
-            <grupo numero="7 1" divide=15>
+            <grupo numero="7 1" divide="15">
                 <categoria>Auxiliar Administrativo más de 3 años Teleoperadores mas de 3 años</categoria>
                 <salario_base>13500.00</salario_base>
             </grupo>
-            <grupo numero="7 2" divide=15>
+            <grupo numero="7 2" divide="15">
                 <categoria>Auxiliar administrativo de entrada, perforista de segunda; auxiliar de laboratorio; Ayudante operador, cobrador-pagador; auxiliar de caja, operador reproducción multicop, Peón, mozo, personal de limpieza, personal de oficios básicos, conserje ordenanza portero día; costurera oficial, botones, bedeles, teleoperadores</categoria>
                 <salario_base>13300.00</salario_base>
             </grupo>
@@ -135,99 +135,99 @@
             </complementos>
         </tabla_salarial>
         <tabla_salarial anyo="2022">
-            <grupo numero="1 1" divide=15>
+            <grupo numero="1 1" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>25851.50</salario_base>
             </grupo>
-            <grupo numero="1 2" divide=15>
+            <grupo numero="1 2" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>20681.35</salario_base>
             </grupo>
-            <grupo numero="1 3" divide=15>
+            <grupo numero="1 3" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>18096.18</salario_base>
             </grupo>
-            <grupo numero="2 1" divide=15>
+            <grupo numero="2 1" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>23116.65</salario_base>
             </grupo>
-            <grupo numero="2 2" divide=15>
+            <grupo numero="2 2" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>18494.07</salario_base>
             </grupo>
-            <grupo numero="2 3" divide=15>
+            <grupo numero="2 3" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>16181.56</salario_base>
             </grupo>
-            <grupo numero="3 1 A" divide=15>
+            <grupo numero="3 1 A" divide="15">
                 <categoria>Jefe Administracion Superior, Jefe Delineacion</categoria>
                 <salario_base>23117.39</salario_base>
             </grupo>
-            <grupo numero="3 1 B" divide=15>
+            <grupo numero="3 1 B" divide="15">
                 <categoria>Delineante proyectista</categoria>
                 <salario_base>22882.54</salario_base>
             </grupo>
-            <grupo numero="3 2" divide=15>
+            <grupo numero="3 2" divide="15">
                 <categoria>Encargado laboratorio, Jefe de Primera Administrativo , Jefe equipo informatica, Analista de informatica, programador o tecnico de sistemas y comunicaciones</categoria>
                 <salario_base>20283.11</salario_base>
             </grupo>
-            <grupo numero="3 3 A" divide=15>
+            <grupo numero="3 3 A" divide="15">
                 <categoria>Delineante de primera</categoria>
                 <salario_base>19754.30</salario_base>
             </grupo>
-            <grupo numero="3 3 B" divide=15>
+            <grupo numero="3 3 B" divide="15">
                 <categoria>Delineante de segunda</categoria>
                 <salario_base>18765.92</salario_base>
             </grupo>
-            <grupo numero="4 1" divide=15>
+            <grupo numero="4 1" divide="15">
                 <categoria>Jefe Administrativo de Segunda, Cajero con firma, programador maquinas auxiliares, administrador de test, coordinador tratamientos cuestionarios, jefe explotacion, interpretes jurados, secretarias/os de Direccion.</categoria>
                 <salario_base>18394.34</salario_base>
             </grupo>
-            <grupo numero="4 2 A" divide=15>
+            <grupo numero="4 2 A" divide="15">
                 <categoria>Tecnico analista, analista de primera</categoria>
                 <salario_base>18091.01</salario_base>
             </grupo>
-            <grupo numero="4 2 B" divide=15>
+            <grupo numero="4 2 B" divide="15">
                 <categoria>Analista de segunda</categoria>
                 <salario_base>17411.77</salario_base>
             </grupo>
-            <grupo numero="4 2 C" divide=15>
+            <grupo numero="4 2 C" divide="15">
                         <categoria>Inspector entrevistador, encargado, operador tabuladores</categoria>
                         <salario_base>17142.28</salario_base>
                     </grupo>
-            <grupo numero="5 1" divide=15>
+            <grupo numero="5 1" divide="15">
                 <categoria>Oficial de primera, taquigrafo, cajero sin firma, coordinador de estudios, responsable equipo encuestas, operador ordenadores 1ª, jefe de maquinas basicas, clasificador, responsable central teleoperadores</categoria>
                 <salario_base>16903.15</salario_base>
             </grupo>
-            <grupo numero="5 2 A" divide=15>
+            <grupo numero="5 2 A" divide="15">
                 <categoria>Oficial de primera en laboratorio</categoria>
                 <salario_base>16698.86</salario_base>
             </grupo>
-            <grupo numero="5 2 B" divide=15>
+            <grupo numero="5 2 B" divide="15">
                 <categoria>Oficial segunda laboratorio</categoria>
                 <salario_base>16101.77</salario_base>
             </grupo>
-            <grupo numero="5 3" divide=15>
+            <grupo numero="5 3" divide="15">
                 <categoria>Capataz</categoria>
                 <salario_base>16007.791</salario_base>
             </grupo>
-            <grupo numero="5 4" divide=15>
+            <grupo numero="5 4" divide="15">
                 <categoria>Oficial de segunda, perforista verificador, mecánicos/as, carpinteros/as, electricistas, lector/a de contadores</categoria>
                 <salario_base>15908.40</salario_base>
             </grupo>
-            <grupo numero="6 1" divide=15>
+            <grupo numero="6 1" divide="15">
                 <categoria>Operador de maquinas basicas, dibujante, entrevistador/encuestador, Oficial de oficios de primera, conductor, jardinero</categoria>
                 <salario_base>14914.15</salario_base>
             </grupo>
-            <grupo numero="6 2" divide=15>
+            <grupo numero="6 2" divide="15">
                 <categoria>Calcador, Conserje Mayor, Conserje ordenanza- Vigilante de noche, oficial oficios de segunda</categoria>
                 <salario_base>14218.42</salario_base>
             </grupo>
-            <grupo numero="7 1" divide=15>
+            <grupo numero="7 1" divide="15">
                     <categoria>Auxiliar Administrativo más de 3 años Teleoperadores mas de 3 años</categoria>
                     <salario_base>13770.00</salario_base>
                 </grupo>
-            <grupo numero="7 2" divide=15>
+            <grupo numero="7 2" divide="15">
                 <categoria>Auxiliar administrativo de entrada, perforista de segunda; auxiliar de laboratorio; Ayudante operador, cobrador-pagador; auxiliar de caja, operador reproducción multicop, Peón, mozo, personal de limpieza, personal de oficios básicos, conserje ordenanza portero día; costurera oficial, botones, bedeles, teleoperadores</categoria>
                 <salario_base>13566.00</salario_base>
             </grupo>
@@ -255,99 +255,99 @@
             </complementos>
         </tabla_salarial>
         <tabla_salarial anyo="2023">
-            <grupo numero="1 1" divide=15>
+            <grupo numero="1 1" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>26368.53</salario_base>
             </grupo>
-            <grupo numero="1 2" divide=15>
+            <grupo numero="1 2" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>21094.97</salario_base>
             </grupo>
-            <grupo numero="1 3" divide=15>
+            <grupo numero="1 3" divide="15">
                 <categoria>Titulado Superior</categoria>
                 <salario_base>18458.10</salario_base>
             </grupo>
-            <grupo numero="2 1" divide=15>
+            <grupo numero="2 1" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>23579.00</salario_base>
             </grupo>
-            <grupo numero="2 2" divide=15>
+            <grupo numero="2 2" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>18863.95</salario_base>
             </grupo>
-            <grupo numero="2 3" divide=15>
+            <grupo numero="2 3" divide="15">
                 <categoria>Titulado Medio</categoria>
                 <salario_base>16505.19</salario_base>
             </grupo>
-            <grupo numero="3 1 A" divide=15>
+            <grupo numero="3 1 A" divide="15">
                 <categoria>Jefe Administración Superior, Jefe Delineación</categoria>
                 <salario_base>23579.74</salario_base>
             </grupo>
-            <grupo numero="3 1 B" divide=15>
+            <grupo numero="3 1 B" divide="15">
                 <categoria>Delineante proyectista</categoria>
                 <salario_base>23340.19</salario_base>
             </grupo>
-            <grupo numero="3 2" divide=15>
+            <grupo numero="3 2" divide="15">
                 <categoria>Encargado laboratorio, Jefe de Primera Administrativo , Jefe equipo informatica, Analista de informatica, programador o técnico de sistemas y comunicaciones</categoria>
                 <salario_base>20688.77</salario_base>
             </grupo>
-            <grupo numero="3 3 A" divide=15>
+            <grupo numero="3 3 A" divide="15">
                 <categoria>Delineante de primera</categoria>
                 <salario_base>20149.39</salario_base>
             </grupo>
-            <grupo numero="3 3 B" divide=15>
+            <grupo numero="3 3 B" divide="15">
                 <categoria>Delineante de segunda</categoria>
                 <salario_base>19141.24</salario_base>
             </grupo>
-            <grupo numero="4 1" divide=15>
+            <grupo numero="4 1" divide="15">
                 <categoria>Jefe Administrativo de Segunda, Cajero con firma, programador maquinas auxiliares, administrador de test, coordinador tratamientos cuestionarios, jefe explotacion, interpretes jurados, secretarias/os de Direccion</categoria>
                 <salario_base>18762.23</salario_base>
             </grupo>
-            <grupo numero="4 2 A" divide=15>
+            <grupo numero="4 2 A" divide="15">
                 <categoria>Tecnico analista, analista de primera</categoria>
                 <salario_base>18452.83</salario_base>
             </grupo>
-            <grupo numero="4 2 B" divide=15>
+            <grupo numero="4 2 B" divide="15">
                 <categoria>Analista de segunda</categoria>
                 <salario_base>17760.00</salario_base>
             </grupo>
-            <grupo numero="4 2 C" divide=15>
+            <grupo numero="4 2 C" divide="15">
                 <categoria>Inspector entrevistador, encargado, operador tabuladores</categoria>
                 <salario_base>17485.13</salario_base>
             </grupo>
-            <grupo numero="5 1" divide=15>
+            <grupo numero="5 1" divide="15">
                 <categoria>Oficial de primera, taquigrafo, cajero sin firma, coordinador de estudios, responsable equipo encuestas, operador ordenadores 1ª, jefe de maquinas básicas, clasificador, responsable central teleoperadores</categoria>
                 <salario_base>17241.22</salario_base>
             </grupo>
-            <grupo numero="5 2 A" divide=15>
+            <grupo numero="5 2 A" divide="15">
                 <categoria>Oficial de primera en laboratorio</categoria>
                 <salario_base>17032.84</salario_base>
             </grupo>
-            <grupo numero="5 2 B" divide=15>
+            <grupo numero="5 2 B" divide="15">
                 <categoria>Oficial segunda laboratorio</categoria>
                 <salario_base>16423.81</salario_base>
             </grupo>
-            <grupo numero="5 3" divide=15>
+            <grupo numero="5 3" divide="15">
                 <categoria>Capataz</categoria>
                 <salario_base>16327.94</salario_base>
             </grupo>
-            <grupo numero="5 4" divide=15>
+            <grupo numero="5 4" divide="15">
                 <categoria>Oficial de segunda, perforista verificador, mecanicos/as, carpinteros/as, electricistas, lector/a de contadores</categoria>
                 <salario_base>16226.57</salario_base>
             </grupo>
-            <grupo numero="6 1" divide=15>
+            <grupo numero="6 1" divide="15">
                 <categoria>Operador de máquinas básicas, dibujante, entrevistador/encuestador, Oficial de oficios de primera, conductor, jardinero</categoria>
                 <salario_base>15212.44</salario_base>
             </grupo>
-            <grupo numero="6 2" divide=15>
+            <grupo numero="6 2" divide="15">
                 <categoria></categoria>
                 <salario_base>14502.79</salario_base>
             </grupo>
-            <grupo numero="7 1" divide=15>
+            <grupo numero="7 1" divide="15">
                 <categoria></categoria>
                 <salario_base>14045.40</salario_base>
             </grupo>
-            <grupo numero="7 2" divide=15>
+            <grupo numero="7 2" divide="15">
                 <categoria></categoria>
                 <salario_base>13837.32</salario_base>
             </grupo>
@@ -391,59 +391,59 @@
             <territorio>Provincia de Alicante</territorio>
         </informacion>
         <tabla_salarial anyo="2020">
-            <grupo numero="1 tecnicos" divide=1>
+            <grupo numero="1 tecnicos" divide="1">
                 <categoria>Ingenieros Arquitectos y Licen.</categoria>
                 <salario_base>1887.53</salario_base>
             </grupo>
-            <grupo numero="2 tecnicos" divide=1>
+            <grupo numero="2 tecnicos" divide="1">
                 <categoria>ATS</categoria>
                 <salario_base>1751.85</salario_base>
             </grupo>
-            <grupo numero="3 tecnicos" divide=1>
+            <grupo numero="3 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 1ª</categoria>
                 <salario_base>1423.00</salario_base>
             </grupo>
-            <grupo numero="3 empleados" divide=1>
+            <grupo numero="3 empleados" divide="1">
                 <categoria>Jefe de 1ª Administrativo</categoria>
                 <salario_base>1464.42</salario_base>
             </grupo>
-            <grupo numero="3 operarios" divide=1>
+            <grupo numero="3 operarios" divide="1">
                 <categoria>Jefe de Taller</categoria>
                 <salario_base>1520.35</salario_base>
             </grupo>
-            <grupo numero="4 tecnicos" divide=1>
+            <grupo numero="4 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 2ª</categoria>
                 <salario_base>1357.13</salario_base>
             </grupo>
-            <grupo numero="4 empleados" divide=1>
+            <grupo numero="4 empleados" divide="1">
                 <categoria>Jefe de 2ª Administrativo</categoria>
                 <salario_base>1355.96</salario_base>
             </grupo>
-            <grupo numero="4 operarios" divide=1>
+            <grupo numero="4 operarios" divide="1">
                 <categoria>Encargado</categoria>
                 <salario_base>1324.92</salario_base>
             </grupo>
-            <grupo numero="5 empleados" divide=1>
+            <grupo numero="5 empleados" divide="1">
                 <categoria>Oficial de 1ª Administrativo</categoria>
                 <salario_base>1211.460</salario_base>
             </grupo>
-            <grupo numero="5 operarios" divide=0.033>
+            <grupo numero="5 operarios" divide="0.033">
                 <categoria>Oficial de 1ª</categoria>
                 <salario_base>38.67</salario_base>
             </grupo>
-            <grupo numero="6 empleados" divide=1>
+            <grupo numero="6 empleados" divide="1">
                 <categoria>Conductor</categoria>
                 <salario_base>1,123.98</salario_base>
             </grupo>
-            <grupo numero="6 operarios" divide=0.033>
+            <grupo numero="6 operarios" divide="0.033">
                 <categoria>Oficial de 3ª</categoria>
                 <salario_base>36.92</salario_base>
             </grupo>
-            <grupo numero="7 empleados" divide=1>
+            <grupo numero="7 empleados" divide="1">
                 <categoria>Vigilante</categoria>
                 <salario_base>1085.96</salario_base>
             </grupo>
-            <grupo numero="7 operarios" divide=0.033>
+            <grupo numero="7 operarios" divide="0.033">
                 <categoria>Peon</categoria>
                 <salario_base>35.94</salario_base>
             </grupo>
@@ -459,59 +459,59 @@
             </complementos>
         </tabla_salarial>
         <tabla_salarial anyo="2021">
-            <grupo numero="1 tecnicos" divide=1>
+            <grupo numero="1 tecnicos" divide="1">
                 <categoria>Ingenieros Arquitectos y Licen.</categoria>
                 <salario_base>1925.28</salario_base>
             </grupo>
-            <grupo numero="2 tecnicos" divide=1>
+            <grupo numero="2 tecnicos" divide="1">
                 <categoria>ATS</categoria>
                 <salario_base>1786.88</salario_base>
             </grupo>
-            <grupo numero="3 tecnicos" divide=1>
+            <grupo numero="3 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 1ª</categoria>
                 <salario_base>1451.46</salario_base>
             </grupo>
-            <grupo numero="3 empleados" divide=1>
+            <grupo numero="3 empleados" divide="1">
                 <categoria>Jefe de 1ª Administrativo</categoria>
                 <salario_base>1493.71</salario_base>
             </grupo>
-            <grupo numero="3 operarios" divide=1>
+            <grupo numero="3 operarios" divide="1">
                 <categoria>Jefe de Taller</categoria>
                 <salario_base>1550.76</salario_base>
             </grupo>
-            <grupo numero="4 tecnicos" divide=1>
+            <grupo numero="4 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 2ª</categoria>
                 <salario_base>1,384.27</salario_base>
             </grupo>
-            <grupo numero="4 empleados" divide=1>
+            <grupo numero="4 empleados" divide="1">
                 <categoria>Jefe de 2ª Administrativo</categoria>
                 <salario_base>1383.08</salario_base>
             </grupo>
-            <grupo numero="4 operarios" divide=1>
+            <grupo numero="4 operarios" divide="1">
                 <categoria>Encargado</categoria>
                 <salario_base>1351.42</salario_base>
             </grupo>
-            <grupo numero="5 empleados" divide=1>
+            <grupo numero="5 empleados" divide="1">
                 <categoria>Oficial de 1ª Administrativo</categoria>
                 <salario_base>1235.69</salario_base>
             </grupo>
-            <grupo numero="5 operarios" divide=0.033>
+            <grupo numero="5 operarios" divide="0.033">
                 <categoria>Oficial de 1ª</categoria>
                 <salario_base>39.45</salario_base>
             </grupo>
-            <grupo numero="6 empleados" divide=1>
+            <grupo numero="6 empleados" divide="1">
                 <categoria>Conductor</categoria>
                 <salario_base>1146.46</salario_base>
             </grupo>
-            <grupo numero="6 operarios" divide=0.033>
+            <grupo numero="6 operarios" divide="0.033">
                 <categoria>Oficial de 3ª</categoria>
                 <salario_base>37.66</salario_base>
             </grupo>
-            <grupo numero="7 empleados" divide=1>
+            <grupo numero="7 empleados" divide="1">
                 <categoria>Vigilante</categoria>
                 <salario_base>1107.68</salario_base>
             </grupo>
-            <grupo numero="7 operarios" divide=0.033>
+            <grupo numero="7 operarios" divide="0.033">
                 <categoria>Peon</categoria>
                 <salario_base>36.66</salario_base>
             </grupo>
@@ -527,59 +527,59 @@
             </complementos>
         </tabla_salarial>
         <tabla_salarial anyo="2022">
-            <grupo numero="1 tecnicos" divide=1>
+            <grupo numero="1 tecnicos" divide="1">
                 <categoria>Ingenieros Arquitectos y Licen.</categoria>
                 <salario_base>1963.79</salario_base>
             </grupo>
-            <grupo numero="2 tecnicos" divide=1>
+            <grupo numero="2 tecnicos" divide="1">
                 <categoria>ATS</categoria>
                 <salario_base>1822.62</salario_base>
             </grupo>
-            <grupo numero="3 tecnicos" divide=1>
+            <grupo numero="3 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 1ª</categoria>
                 <salario_base>1480.49</salario_base>
             </grupo>
-            <grupo numero="3 empleados" divide=1>
+            <grupo numero="3 empleados" divide="1">
                 <categoria>Jefe de 1ª Administrativo</categoria>
                 <salario_base>1523.58</salario_base>
             </grupo>
-            <grupo numero="3 operarios" divide=1>
+            <grupo numero="3 operarios" divide="1">
                 <categoria>Jefe de Taller</categoria>
                 <salario_base>1581.77</salario_base>
             </grupo>
-            <grupo numero="4 tecnicos" divide=1>
+            <grupo numero="4 tecnicos" divide="1">
                 <categoria>Jefe de Organización de 2ª</categoria>
                 <salario_base>1411.96</salario_base>
             </grupo>
-            <grupo numero="4 empleados" divide=1>
+            <grupo numero="4 empleados" divide="1">
                 <categoria>Jefe de 2ª Administrativo</categoria>
                 <salario_base>1410.74</salario_base>
             </grupo>
-            <grupo numero="4 operarios" divide=1>
+            <grupo numero="4 operarios" divide="1">
                 <categoria>Encargado</categoria>
                 <salario_base>1378.45</salario_base>
             </grupo>
-            <grupo numero="5 empleados" divide=1>
+            <grupo numero="5 empleados" divide="1">
                 <categoria>Oficial de 1ª Administrativo</categoria>
                 <salario_base>1260.41</salario_base>
             </grupo>
-            <grupo numero="5 operarios" divide=0.033>
+            <grupo numero="5 operarios" divide="0.033">
                 <categoria>Oficial de 1ª</categoria>
                 <salario_base>40.23</salario_base>
             </grupo>
-            <grupo numero="6 empleados" divide=1>
+            <grupo numero="6 empleados" divide="1">
                 <categoria>Conductor</categoria>
                 <salario_base>1169.39</salario_base>
             </grupo>
-            <grupo numero="6 operarios" divide=0.033>
+            <grupo numero="6 operarios" divide="0.033">
                 <categoria>Oficial de 3ª</categoria>
                 <salario_base>38.41</salario_base>
             </grupo>
-            <grupo numero="7 empleados" divide=1>
+            <grupo numero="7 empleados" divide="1">
                 <categoria>Vigilante</categoria>
                 <salario_base>1129.83</salario_base>
             </grupo>
-            <grupo numero="7 operarios" divide=0.033>
+            <grupo numero="7 operarios" divide="0.033">
                 <categoria>Peon</categoria>
                 <salario_base>37.39</salario_base>
             </grupo>
@@ -612,47 +612,47 @@
             <territorio>Nacional</territorio>
         </informacion>
         <tabla_salarial anyo="2022">
-            <grupo numero="1" divide=1>
+            <grupo numero="1" divide="1">
                 <categoria>Ingenieros y Licenciados.Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto de los Trabajadores</categoria>
                 <salario_base>1629.30</salario_base>
             </grupo>
-            <grupo numero="2" divide=1>
+            <grupo numero="2" divide="1">
                 <categoria>Ingenieros Técnicos, Peritos y Ayudantes Titulados</categoria>
                 <salario_base>1351.20</salario_base>
             </grupo>
-            <grupo numero="3" divide=1>
+            <grupo numero="3" divide="1">
                 <categoria>Jefes Administrativos y de Taller</categoria>
                 <salario_base>1175.40</salario_base>
             </grupo>
-            <grupo numero="4" divide=1>
+            <grupo numero="4" divide="1">
                 <categoria>Ayudantes no Titulados</categoria>
                 <salario_base>1166.70</salario_base>
             </grupo>
-            <grupo numero="5" divide=1>
+            <grupo numero="5" divide="1">
                 <categoria>Oficiales Administrativos</categoria>
                 <salario_base>1166.70</salario_base>
             </grupo>
-            <grupo numero="6" divide=1>
+            <grupo numero="6" divide="1">
                 <categoria>Subalternos</categoria>
                 <salario_base>1166.70</salario_base>
             </grupo>
-            <grupo numero="7" divide=1>
+            <grupo numero="7" divide="1">
                 <categoria>Auxiliares Administrativos</categoria>
                 <salario_base>1166.70</salario_base>
             </grupo>
-            <grupo numero="8" divide=0.033>
+            <grupo numero="8" divide="0.033">
                 <categoria>Oficiales de primera y segunda</categoria>
                 <salario_base>38.89</salario_base>
             </grupo>
-            <grupo numero="9" divide=0.033>
+            <grupo numero="9" divide="0.033">
                 <categoria>Oficiales de tercera y Especialistas</categoria>
                 <salario_base>38.89</salario_base>
             </grupo>
-            <grupo numero="10" divide=0.033>
+            <grupo numero="10" divide="0.033">
                 <categoria>Peones</categoria>
                 <salario_base>38.89</salario_base>
             </grupo>
-            <grupo numero="11" divide=0.033>
+            <grupo numero="11" divide="0.033">
                 <categoria>Trabajadores menores de dieciocho años, cualquiera que sea su categoría profesional</categoria>
                 <salario_base>38.89</salario_base>
             </grupo>

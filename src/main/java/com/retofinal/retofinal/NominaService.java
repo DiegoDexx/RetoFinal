@@ -94,26 +94,26 @@ public class NominaService {
             NodeList convenio = xmlf.getElementsByTagName("convenio");
             
             for( int a=0; a<convenio.getLength(); a++){ 
-                Node node = convenio.item(a);
+                Node nodoConvenio = convenio.item(a);
                 
-                if (node.getNodeType() == Node.ELEMENT_NODE) { 
-                Element element = (Element) node;
+                if (nodoConvenio.getNodeType() == Node.ELEMENT_NODE) { 
+                Element elementoConvenio = (Element) nodoConvenio;
                 
-                NodeList tablasalarial = xmlf.getElementsByTagName("tabla_salarial");
+                NodeList tablasalarial = elementoConvenio.getElementsByTagName("tabla_salarial");
                 
                     for( int b=0; b<tablasalarial.getLength(); b++) { 
                        Node  nodetabla = tablasalarial.item(b);
                        
-                       Element elementanyo = (Element) node;
+                       Element elementanyo = (Element) nodoConvenio;
                        String anyo = elementanyo.getAttribute("anyo");
                        String year="2022";
                        
                     if( anyo.equals(year)){
                        
                        if (nodetabla.getNodeType() == Node.ELEMENT_NODE) {
-                           Element elementt = (Element) nodetabla;
+                           Element elementoTabla = (Element) nodetabla;
                            
-                           NodeList grupo = xmlf.getElementsByTagName("grupo");
+                           NodeList grupo = elementoTabla.getElementsByTagName("grupo");
                            
                            for( int c=0; c<grupo.getLength(); c++) { 
                            Node nodegrupo = grupo.item(c);

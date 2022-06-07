@@ -51,7 +51,7 @@ public class Empleado {
     private String fechafinc;
 
     @Column(name = "idempresa")
-    private int idempresa;
+    private long idempresa;
 
     @Column(name = "grupocot")
     private String grupocot;
@@ -132,11 +132,11 @@ public class Empleado {
         this.fechafinc = fechafinc;
     }
 
-    public int getIdempresa() {
+    public long getIdempresa() {
         return idempresa;
     }
 
-    public void setIdempresa(int idempresa) {
+    public void setIdempresa(long idempresa) {
         this.idempresa = idempresa;
     }
 

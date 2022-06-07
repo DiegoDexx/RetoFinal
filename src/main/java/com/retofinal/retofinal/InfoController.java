@@ -136,7 +136,7 @@ public class InfoController {
 
     NominaService servicenomina;
 
-    @PostMapping("/nomina")
+    @PostMapping("/nominas")
     public ResponseEntity<Nomina> NominaInfo(HttpServletRequest request) throws IOException, ParserConfigurationException, SAXException {
         Nomina nomina = servicenomina.getNominaInfo(request);
         return ResponseEntity.ok(nomina);

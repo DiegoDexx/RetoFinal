@@ -23,10 +23,10 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     List<Empresa> findAll();
     
     
-    /*
+    
     @Override
     Optional <Empresa> findById(Long Id);
-    
+    /*
     Optional <List<Empresa>> findByNombreempresa(String nombreEmpresa);
         
     Optional <List<Empresa>> findByDomicilio(String domicilio);

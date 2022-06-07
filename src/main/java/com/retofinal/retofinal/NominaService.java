@@ -4,8 +4,10 @@
  */
 package com.retofinal.retofinal;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,6 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
@@ -30,41 +33,53 @@ public class NominaService {
 
     NominaRepository repositoryn;
 
-    Empleado em = new Empleado();
-    Empresa empr = new Empresa();
+    public String getFileContent(HttpServletRequest request) {
 
-    public Nomina getNominaInfo(Long idnomina, Long idempleado, String nomempresanomina, String direccionempresanomina, String cifempresanomina, String cccempresanomina, String nomtrabnomina, String niftrabnomina, String nuftrabnomina,
-            String catTrabajadorNomina, String grupoCotizacionTrabajadorNomina, String fechaInicioNomina, String fechaFinNomina, int numeroDiasNomina, double resultadoSalarioBase,
-            double resultadoHorasComplementarias, double resultadoHorasExtra, double resultadoHorasExtraMayor, double resultadoAyudaEspecial, double resultadoTransporte, double resultadoTeletrabajo,
-            double resultadoDieta, double resultadoDietaMedia, double resultadoTotalDevengado, double contingenciasComunes, double porcentajeContingenciasComunes, double resultadoContingenciasComunes,
-            double desempleo, double porcentajeDesempleo, double resultadoDesempleo, double fpTrabajador, double porcentajeFp, double resultadoFp, double horasExtraDeducciones, double porcentajeHorasExtraDeducciones,
-            double resultadoHorasExtraDeducciones, double horasExtraMayorDeducciones, double porcentajeHorasExtraMayorDeducciones, double resultadoHorasExtramayorDeducciones, double resultadoTotalAportaciones,
-            double irpf, int porcentajeIrpf, double resultadoIrpf, double resultadoTotalDeducir, double resultadoTotalPercibir, double resultadoRemuneracionMensual, double resultadoProrrataPagasExtra,
-            double resultadoBaseContingenciasComunes, double porcentajeTipoEmpresa, double aportacionEmpresa, double accidenteTrabajoYEnfermedadProfesional, double porcentajeAccidenteTrabajoYEnfermedadProfesional,
-            double resultadoAccidenteTrabajoYEnfermedadProfesional, double desempleoEmpresa, double porcentajeDesempleoEmpresa, double resultadoDesempleoEmpresa, double fp, double porcentajeFpEmpresa,
-            double resultadoFpEmpresa, double fogasa, double porcentajeFogasa, double resultadoFogasa, double horasExtraEmpresa, double porcentajeHorasExtraEmpresa, double resultadoHorasExtraEmpresa,
-            double horasExtraMayorEmpresa, double porcentajeHorasExtraMayorEmpresa, double resultadoHorasExtraMayorEmpresa, double baseIrpf, double totalAportacionesEmpresa, HttpServletRequest request) throws IOException, ParserConfigurationException, SAXException {
+        String fileContent = "";
 
+        try {
+            InputStream input = request.getInputStream();
+
+            byte[] data = new byte[1024];
+
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+            int nRead;
+            while ((nRead = input.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+
+            buffer.flush();
+            fileContent = new String(buffer.toByteArray());
+
+        } catch (IOException ex) {
+            System.err.println("Error! " + ex.getMessage());
+        }
+
+        return fileContent;
+    }
+
+    public Nomina getNominaInfo(HttpServletRequest request) {
         Nomina nom = new Nomina();
 
-        // DATOS EMPRESA //
-        nomempresanomina = empr.getnombreempresa();
-        direccionempresanomina = empr.getDomicilio();
-        cifempresanomina = empr.getCif();
-        cccempresanomina = empr.getCcc();
-
-        // DATOS TRABAJADOR //
-        nomtrabnomina = em.getNombre() + em.getApellido1() + em.getApellido2();
-        niftrabnomina = em.getNif();
-        nuftrabnomina = em.getNus();
-        /* catTrabajadorNomina = em.getCatProf();  Esto no va porque no hay un get de la categoria en el empleado*/
-        grupoCotizacionTrabajadorNomina = em.getGrupocot();
-
-        // DATOS NOMINA //
-        // PERIODO //
-        fechaInicioNomina = nom.getFechaInicioNomina();
-        fechaFinNomina = nom.getFechaFinNomina();
-        numeroDiasNomina = nom.getNumeroDiasNomina();
+//        // DATOS EMPRESA //
+//        String nomempresanomina = empr.getnombreempresa();
+//        String direccionempresanomina = empr.getDomicilio();
+//        String cifempresanomina = empr.getCif();
+//        String cccempresanomina = empr.getCcc();
+//
+//        // DATOS TRABAJADOR //
+//        String nomtrabnomina = em.getNombre() + em.getApellido1() + em.getApellido2();
+//        String niftrabnomina = em.getNif();
+//        String nuftrabnomina = em.getNus();
+//        String catTrabajadorNomina = getCatTrabajador();
+//        String grupoCotizacionTrabajadorNomina = em.getGrupocot();
+//
+//        // DATOS NOMINA //
+//        // PERIODO //
+//        String fechaInicioNomina = nom.getFechaInicioNomina();
+//        String fechaFinNomina = nom.getFechaFinNomina();
+//        int numeroDiasNomina = nom.getNumeroDiasNomina();
 
         // DEVENGOS //
 //        resultadoSalarioBase = 
@@ -76,17 +91,16 @@ public class NominaService {
 //        nom.setFechaInicio(fecIni);
 //        nom.setFechaFinal(FechaFin);
 //        nom.setGrupoCot(grupocot);
-        String path = "C:\\Users\\MH-GAMES\\Desktop\\TrabajoRetoFinal\\";
-        String file = "Reto_Nominas.xml";
-
+        String contenidoFicheroXML = getFileContent(request);
         DocumentBuilderFactory dbuilder = DocumentBuilderFactory.newInstance();
 
         try {
 
-            dbuilder.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            //dbuilder.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             DocumentBuilder db = dbuilder.newDocumentBuilder();
-            Document xmlf = db.parse(new File(path + file));
+            Document xmlf = db.parse(new InputSource(new StringReader(contenidoFicheroXML)));
 
+            // get Convenio
             NodeList convenio = xmlf.getElementsByTagName("convenio");
 
             for (int a = 0; a < convenio.getLength(); a++) {
@@ -144,7 +158,6 @@ public class NominaService {
             System.err.println("Ups, Something  wrong!");
 
         }
-
         repositoryn.save(nom);
         return nom;
     }

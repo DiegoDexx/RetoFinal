@@ -32,9 +32,6 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
     Optional<List<Empleado>> findEmpleadoByApellido1(String apellido1);
     
     Optional<List<Empleado>> findEmpleadoByNif(String nif_empleado);
-    
-    
-  
-    
+
     
 }

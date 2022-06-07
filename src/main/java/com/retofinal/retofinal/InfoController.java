@@ -4,7 +4,10 @@
  */
 package com.retofinal.retofinal;
 
+import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.ParserConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -132,30 +136,9 @@ public class InfoController {
 
     NominaService servicenomina;
 
-    @GetMapping("/nomina")
-    public ResponseEntity<String> NominaInfo(HttpServletRequest request) throws IOException, ParserConfigurationException, SAXException {
-
-        Empleado em = new Empleado();
-        Empresa emp = new Empresa();
-
-        String inf3 = "";
-        Nomina nom = servicenomina.getNominaInfo(Long.MIN_VALUE, Long.MIN_VALUE, Long.MIN_VALUE, inf3, inf3, inf3, inf3, inf3, inf3, 0, inf3, inf3, request);
-
-        if (nom != null) {
-
-            inf3 += nom.getNombreEmpleado() + " \n";
-            inf3 += nom.getCifNomina() + " \n";
-            inf3 += nom.getNusNomina() + "\n";
-            inf3 += nom.getNombreEmpresa() + "\n";
-            inf3 += nom.getDomicilioEmpresa() + "\n";
-            inf3 += nom.getFechaInicio() + "\n";
-            inf3 += nom.getFechaInicio() + "\n";
-            inf3 += nom.getFechaFinal() + "\n";
-            inf3 += nom.getSalarioBase(0) + "\n";
-
-        }
-
-        return ResponseEntity.ok(inf3);
+    @PostMapping("/nomina")
+    public ResponseEntity<Nomina> NominaInfo(HttpServletRequest request) throws IOException, ParserConfigurationException, SAXException {
+        Nomina nomina = servicenomina.getNominaInfo(request);
+        return ResponseEntity.ok(nomina);
     }
-
 }

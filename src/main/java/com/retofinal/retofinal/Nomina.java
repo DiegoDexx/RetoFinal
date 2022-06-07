@@ -19,13 +19,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "nomina")
 public class Nomina {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "idmepleado")
-    private int idEmpleado;
+    @Column(name = "idempleado")
+    private long idEmpleado;
 
     // CABECERA //
     // EMPRESA //
@@ -48,7 +48,7 @@ public class Nomina {
     @Column(name = "niftrabnomina")
     private String nifTrabajadorNomina;
 
-    @Column(name = "nustrabnomina")
+    @Column(name = "nuftrabnomina")
     private String nusTrabajadorNomina;
 
     @Column(name = "cattrabnomina")
@@ -249,14 +249,14 @@ public class Nomina {
     @Column(name = "porhorasextramayor")
     private double porcentajeHorasExtraMayorEmpresa;
 
-    @Column(name = "reshorasextraempresamayor")
+    @Column(name = "reshorasextramayorempresa")
     private double resultadoHorasExtraMayorEmpresa;
 
     // PUNTO 5 //
     @Column(name = "baseirpf")
     private double baseIrpf;
 
-    @Column(name = "totalaportacionesempresa")
+    @Column(name = "totalaportacionempresa")
     private double totalAportacionesEmpresa;
 
     public Long getId() {
@@ -267,7 +267,7 @@ public class Nomina {
         this.id = id;
     }
 
-    public int getIdEmpleado() {
+    public long getIdEmpleado() {
         return idEmpleado;
     }
 

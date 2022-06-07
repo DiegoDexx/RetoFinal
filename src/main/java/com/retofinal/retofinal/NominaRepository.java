@@ -18,7 +18,9 @@ public interface NominaRepository extends JpaRepository<Nomina, Long>{
     @Override
     <S extends Nomina > S save(S s);
     
-    // <T extends Nomina > T save2(T Empleado);
+//     <T extends Nomina > T saveEmpleado(T Empleado);
+//     
+//     <T extends Nomina > T saveEmpresa(T Empresa);
     
    // @Override
    // List <Nomina> findAll();

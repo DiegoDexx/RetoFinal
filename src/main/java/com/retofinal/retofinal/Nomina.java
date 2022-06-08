@@ -25,7 +25,7 @@ public class Nomina {
     private Long id;
 
     @Column(name = "idempleado")
-    private long idEmpleado;
+    private Long idEmpleado;
 
     // CABECERA //
     // EMPRESA //
@@ -271,7 +271,7 @@ public class Nomina {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
+    public void setIdEmpleado(Long idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 

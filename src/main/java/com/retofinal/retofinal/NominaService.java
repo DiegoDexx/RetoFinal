@@ -82,6 +82,7 @@ public class NominaService {
             nom.setCccEmpresaNomina(empr.getCcc());
 
             // DATOS TRABAJADOR //
+            nom.setIdEmpleado(e.getId());
             nom.setNombreTrabajadorNomina(e.getNombre() + e.getApellido1() + e.getApellido2());
             nom.setNifTrabajadorNomina(e.getNif());
             nom.setNusTrabajadorNomina(e.getNus());
@@ -96,7 +97,6 @@ public class NominaService {
 
             // DEVENGOS //
 //        resultadoSalarioBase = 
-
             String contenidoFicheroXML = getFileContent(request);
             DocumentBuilderFactory dbuilder = DocumentBuilderFactory.newInstance();
 
@@ -108,6 +108,9 @@ public class NominaService {
 
                 // get Convenio
                 NodeList convenio = xmlf.getElementsByTagName("convenio");
+//                Node nodeConvenios = convenios.item(0);
+//                Element elementoConvenios = (Element) nodeConvenios;
+//                NodeList convenio = elementoConvenios.getElementsByTagName("convenio");
 
                 for (int a = 0; a < convenio.getLength(); a++) {
                     Node nodoConvenio = convenio.item(a);
@@ -115,43 +118,53 @@ public class NominaService {
                     if (nodoConvenio.getNodeType() == Node.ELEMENT_NODE) {
                         Element elementoConvenio = (Element) nodoConvenio;
 
-                        NodeList tablasalarial = elementoConvenio.getElementsByTagName("tabla_salarial");
+                        NodeList infor = elementoConvenio.getElementsByTagName("informacion");
 
-                        for (int b = 0; b < tablasalarial.getLength(); b++) {
-                            Node nodetabla = tablasalarial.item(b);
+                        for (int inf = 0; inf < infor.getLength(); inf++) {
+                            Node nodoInfor = convenio.item(inf);
+                            Element elementoInfor = (Element) nodoInfor;
+                            String nombreConvenio = elementoInfor.getElementsByTagName("nombre").item(0).getTextContent();
+                            String nomConvenio = "CONVENIO COLECTIVO PROVINCIAL DE OFICINAS Y DESPACHOS DE ALICANTE";
 
-                            Element elementanyo = (Element) nodoConvenio;
-                            String anyo = elementanyo.getAttribute("anyo");
-                            String year = "2022";
+                            if (nombreConvenio.equals(nomConvenio)) {
 
-                            if (anyo.equals(year)) {
+                                NodeList tablasalarial = elementoConvenio.getElementsByTagName("tabla_salarial");
 
-                                if (nodetabla.getNodeType() == Node.ELEMENT_NODE) {
-                                    Element elementoTabla = (Element) nodetabla;
+                                for (int b = 0; b < tablasalarial.getLength(); b++) {
+                                    Node nodetabla = tablasalarial.item(b);
 
-                                    NodeList grupo = elementoTabla.getElementsByTagName("grupo");
+                                    Element elementanyo = (Element) nodetabla;
+                                    String anyo = elementanyo.getAttribute("anyo");
+                                    String year = "2022";
 
-                                    for (int c = 0; c < grupo.getLength(); c++) {
-                                        Node nodegrupo = grupo.item(c);
+                                    if (anyo.equals(year)) {
 
-                                        Element elementgrupo = (Element) nodegrupo;
+                                        if (nodetabla.getNodeType() == Node.ELEMENT_NODE) {
+                                            Element elementoTabla = (Element) nodetabla;
 
-                                        String grupocot = elementgrupo.getAttribute("numero");
-                                        String grupoElegido = "6 1";
+                                            NodeList grupo = elementoTabla.getElementsByTagName("grupo");
 
-                                        if (grupocot.equals(grupoElegido)) {
-                                            Element elementoGrupo = (Element) nodegrupo;
-                                            String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
-                                            String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
-                                            Double SalBase = Double.parseDouble(salario);
-                                            nom.setResultadoSalarioBase(SalBase);
-                                            nom.setCatTrabajadorNomina(catProf);
+                                            for (int c = 0; c < grupo.getLength(); c++) {
+                                                Node nodegrupo = grupo.item(c);
+
+                                                Element elementgrupo = (Element) nodegrupo;
+
+                                                String grupocot = elementgrupo.getAttribute("numero");
+                                                String grupoElegido = "6 1";
+
+                                                if (grupocot.equals(grupoElegido)) {
+                                                    Element elementoGrupo = (Element) nodegrupo;
+                                                    String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
+                                                    String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
+                                                    nom.setCatTrabajadorNomina(catProf);
+                                                    Double SalBase = Double.parseDouble(salario);
+                                                    nom.setResultadoSalarioBase(SalBase);
+                                                }
+                                            }
+
                                         }
                                     }
-
                                 }
-                            } else {
-                                return null;
                             }
 
                         }
@@ -161,11 +174,11 @@ public class NominaService {
                 }
 
             } catch (ParserConfigurationException | SAXException | IOException ex) {
-                System.err.println("Ups, Something  wrong!");
+                System.err.println("Ups, Something  wrong!" + ex.getMessage());
 
             }
             repositoryn.save(nom);
-            
+
         }
         return nom;
     }

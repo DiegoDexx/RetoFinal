@@ -92,6 +92,11 @@ public class NominaService {
 
             // DATOS NOMINA //
             // PERIODO //
+            if(nom.getId() == null){
+                nom.setId(1L);
+            } else {
+                nom.setId(nom.getId() + 1);
+            }
             nom.setFechaInicioNomina("2022/06/01");
             nom.setFechaFinNomina("2022/06/30");
             nom.setNumeroDiasNomina(nom.getNumeroDiasNomina());

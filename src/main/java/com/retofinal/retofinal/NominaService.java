@@ -85,14 +85,14 @@ public class NominaService {
 
             // DATOS TRABAJADOR //
             nom.setIdEmpleado(e.getId());
-            nom.setNombreTrabajadorNomina(e.getNombre() + e.getApellido1() + e.getApellido2());
+            nom.setNombreTrabajadorNomina(e.getNombre() + " " + e.getApellido1() + " " + e.getApellido2());
             nom.setNifTrabajadorNomina(e.getNif());
             nom.setNusTrabajadorNomina(e.getNus());
             nom.setGrupoCotizacionTrabajadorNomina(e.getGrupocot());
 
             // DATOS NOMINA //
             // PERIODO //
-            if(nom.getId() == null){
+            if (nom.getId() == null) {
                 nom.setId(1L);
             } else {
                 nom.setId(nom.getId() + 1);
@@ -158,12 +158,76 @@ public class NominaService {
                                                     Element elementoGrupo = (Element) nodegrupo;
                                                     String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
                                                     String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
+                                                    int div = Integer.parseInt(elementoGrupo.getAttribute("divide"));
+
                                                     nom.setCatTrabajadorNomina(catProf);
-                                                    Double SalBase = Double.parseDouble(salario);
+                                                    Double SalBase = (Double.parseDouble(salario)) / div;
                                                     nom.setResultadoSalarioBase(SalBase);
                                                 }
                                             }
+                                            double salBaseHora = nom.getResultadoSalarioBase() / 1790;
 
+                                            nom.setResultadoHorasExtra((Math.random() * 10) * salBaseHora * 1.5);
+
+                                            double percepcionesSalariales = nom.getResultadoSalarioBase() + nom.getResultadoHorasExtra() + nom.getResultadoHorasComplementarias() + nom.getResultadoHorasExtraMayor();
+                                            double percepcionesNoSalariales = nom.getResultadoAyudaEspecial() + nom.getResultadoTransporte() + nom.getResultadoTeletrabajo() + nom.getResultadoDieta() + nom.getResultadoDietaMedia();
+                                            nom.setResultadoTotalDevengado(percepcionesSalariales + percepcionesNoSalariales);
+                                            
+                                            //Deducciones
+                                            nom.setContingenciasComunes(percepcionesSalariales + nom.getResultadoSalarioBase());
+                                            nom.setPorcentajeContingenciasComunes(4.7);
+                                            nom.setResultadoContingenciasComunes(nom.getContingenciasComunes() * nom.getPorcentajeContingenciasComunes() / 100);
+                                            
+                                            //Falta sacar los datos del porcentaje de desempleo del otro xml, por ahora, siempre toma el mismo valor.
+                                            
+                                            nom.setDesempleo(nom.getContingenciasComunes() + nom.getResultadoHorasExtra());
+                                            nom.setPorcentajeDesempleo(1.55);
+                                            nom.setResultadoDesempleo(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
+                                            
+                                            nom.setFpTrabajador(nom.getDesempleo());
+                                            nom.setPorcentajeFp(0.1);
+                                            nom.setResultadoFp(nom.getFpTrabajador() * nom.getPorcentajeFp() / 100);
+                                            
+                                            nom.setIrpf(nom.getDesempleo());
+                                            nom.setPorcentajeIrpf(12); //Se ha establecido a 12, pero depende de las circunstancias del trabajador.
+                                            nom.setResultadoIrpf(nom.getIrpf() * nom.getPorcentajeIrpf() / 100);
+                                            
+                                            nom.setHorasExtraDeducciones(nom.getResultadoHorasExtra());
+                                            nom.setPorcentajeHorasExtraDeducciones(4.7);
+                                            nom.setResultadoHorasExtraDeducciones(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
+                                            
+                                            nom.setResultadoTotalDeducir(nom.getResultadoContingenciasComunes() + nom.getResultadoDesempleo() + nom.getResultadoFp() + nom.getResultadoHorasExtraDeducciones() + nom.getResultadoIrpf());
+                                            
+                                            //Total a percibir
+                                            nom.setResultadoTotalPercibir(nom.getResultadoTotalDevengado() - nom.getResultadoTotalDeducir());
+                                            
+                                            //Aportaciones empresa
+                                            
+                                            //En la parte de las contingencias comunes, hay que plantearlo de otra manera.
+                                            
+                                            nom.setAccidenteTrabajoYEnfermedadProfesional(nom.getDesempleo());
+                                            nom.setPorcentajeAccidenteTrabajoYEnfermedadProfesional(2); //Dependiendo la activaidad de la empresa, el numero varia.
+                                            nom.setResultadoAccidenteTrabajoYEnfermedadProfesional(nom.getAccidenteTrabajoYEnfermedadProfesional() * nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() / 100);
+                                            
+                                            nom.setDesempleoEmpresa(nom.getDesempleo());
+                                            nom.setPorcentajeDesempleoEmpresa(5.5); //En determinadas circunstancias puede tomar otro valor, se toma del otro xml.
+                                            nom.setResultadoDesempleoEmpresa(nom.getDesempleoEmpresa() * nom.getPorcentajeDesempleoEmpresa() / 100);
+                                            
+                                            nom.setFp(nom.getDesempleo());
+                                            nom.setPorcentajeFpEmpresa(0.6);
+                                            nom.setResultadoFpEmpresa(nom.getFp() * nom.getPorcentajeFpEmpresa() / 100);
+                                            
+                                            nom.setFogasa(nom.getDesempleo());
+                                            nom.setPorcentajeFogasa(0.2);
+                                            nom.setResultadoFogasa(nom.getFogasa() * nom.getPorcentajeFogasa() / 100);
+                                            
+                                            nom.setHorasExtraEmpresa(nom.getHorasExtraMayorDeducciones());
+                                            nom.setPorcentajeHorasExtraEmpresa(23.60);
+                                            nom.setResultadoHorasExtraEmpresa(nom.getHorasExtraEmpresa() * nom.getPorcentajeHorasExtraEmpresa() / 100);
+                                            
+                                            //Total aportaciones empresa
+                                            //Falta sumar las contingencias comunes de la empresa.
+                                            nom.setTotalAportacionesEmpresa(nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() + nom.getResultadoDesempleoEmpresa() + nom.getResultadoFpEmpresa() + nom.getResultadoFogasa() + nom.getResultadoHorasExtraEmpresa());
                                         }
                                     }
                                 }
@@ -179,7 +243,6 @@ public class NominaService {
                 System.err.println("Ups, Something  wrong! " + ex.getMessage());
 
             }
-            System.out.println(nom.getId());
             repositoryn.save(nom);
 
         }

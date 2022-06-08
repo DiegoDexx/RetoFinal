@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Diego
+ * @author Diego, Laura e Ismael
  */
 @RestController()
 @RequestMapping("/info")

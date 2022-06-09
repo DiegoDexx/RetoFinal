@@ -21,7 +21,7 @@ CREATE TABLE empleado(
     apellido2 VARCHAR(100),
     nif VARCHAR(9) UNIQUE NOT NULL,
     nus VARCHAR(12) UNIQUE NOT NULL,
-    tipocontrato ENUM('indefinido','temporal','formacion','practicas') NOT NULL, 
+    tipocontrato ENUM('indefinido','formacion','fijo discontinuo','temporal de relevo','temporal de sustitucion','temporal eventual') NOT NULL, 
     fecinicontrato DATE NOT NULL, 
     fecfincontrato DATE, 
     idempresa INT,
@@ -152,6 +152,6 @@ VALUES (NULL,'Abogados Lopez','Illueca 8','CONVENIO COLECTIVO PROVINCIAL DE OFIC
 
 INSERT INTO empleado
 VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','4 2 A','4'),
-       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','3 1 B','5'),
-       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','1 1',DEFAULT)
+       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','formacion','2022/07/01',NULL,'1','3 1 B','5'),
+       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal eventual','2022/05/25','2022/07/01','2','1 1',DEFAULT)
 ;

@@ -5,7 +5,7 @@ CREATE DATABASE reto_nomina CHARACTER SET latin1 COLLATE latin1_spanish_ci;
 USE reto_nomina;
 
 
-CREATE TABLE Empresa(
+CREATE TABLE empresa(
     id INT PRIMARY KEY auto_increment,
     nomempresa VARCHAR(100) NOT NULL,
     direccion VARCHAR(100),
@@ -14,7 +14,7 @@ CREATE TABLE Empresa(
     ccc VARCHAR(11) UNIQUE NOT NULL
 );
 
-CREATE TABLE Empleado(
+CREATE TABLE empleado(
     id INT PRIMARY KEY auto_increment,
     nombretrab VARCHAR(100) NOT NULL,
     apellido1 VARCHAR(100) NOT NULL,
@@ -25,15 +25,15 @@ CREATE TABLE Empleado(
     fecinicontrato DATE NOT NULL, 
     fecfincontrato DATE, 
     idempresa INT,
-    CONSTRAINT fk_empresa_empleado FOREIGN KEY (idempresa) REFERENCES Empresa (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+    CONSTRAINT fk_empresa_empleado FOREIGN KEY (idempresa) REFERENCES empresa (id) ON DELETE NO ACTION ON UPDATE CASCADE,
     grupocot VARCHAR(200), 
     irpf INT NOT NULL DEFAULT 2
 );
 
-CREATE TABLE Nomina(
+CREATE TABLE nomina(
     id INT PRIMARY KEY auto_increment,
     idempleado INT,
-    CONSTRAINT fk_nomina_empleado FOREIGN KEY (idempleado) REFERENCES Empleado (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+    CONSTRAINT fk_nomina_empleado FOREIGN KEY (idempleado) REFERENCES empleado (id) ON DELETE NO ACTION ON UPDATE CASCADE,
 
     -- EMPRESA --
     nomempresanomina VARCHAR(100) NOT NULL,
@@ -145,12 +145,12 @@ CREATE TABLE Nomina(
     totalaportacionempresa DECIMAL(7,2)
 );
 
-INSERT INTO Empresa
+INSERT INTO empresa
 VALUES (NULL,'Abogados Lopez','Illueca 8','CONVENIO COLECTIVO PROVINCIAL DE OFICINAS Y DESPACHOS DE ALICANTE','48954456545446531878','23746934321'),
        (NULL,'Metales Paco e Hijos','Petanca 62','CONVENIO COLECTIVO ESTATAL DE LA INDUSTRIA, LAS NUEVAS TECNOLOGÍAS Y LOS SERVICIOS DEL SECTOR DEL METAL','48954456545426531878','23756934321')
 ;
 
-INSERT INTO Empleado
+INSERT INTO empleado
 VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','4 2 A','4'),
        (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','3 1 B','5'),
        (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','1 1',DEFAULT)

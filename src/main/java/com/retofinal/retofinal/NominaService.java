@@ -167,7 +167,7 @@ public class NominaService {
                                             }
                                             double salBaseHora = nom.getResultadoSalarioBase() / 1790;
 
-                                            nom.setResultadoHorasExtra((Math.random() * 10) * salBaseHora * 1.5);
+                                            nom.setResultadoHorasExtra((Math.random() * 10 + 1) * salBaseHora * 1.5);
 
                                             double percepcionesSalariales = nom.getResultadoSalarioBase() + nom.getResultadoHorasExtra() + nom.getResultadoHorasComplementarias() + nom.getResultadoHorasExtraMayor();
                                             double percepcionesNoSalariales = nom.getResultadoAyudaEspecial() + nom.getResultadoTransporte() + nom.getResultadoTeletrabajo() + nom.getResultadoDieta() + nom.getResultadoDietaMedia();

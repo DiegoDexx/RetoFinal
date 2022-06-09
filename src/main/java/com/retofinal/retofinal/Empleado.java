@@ -28,7 +28,7 @@ public class Empleado {
 
    
     
-    @Column(name = "nombre")
+    @Column(name = "nombretrab")
     private String nombre;
 
     @Column(name = "apellido1")
@@ -46,7 +46,7 @@ public class Empleado {
     @Column(name = "tipocontrato")
     private String tipoContrato;
 
-    @Column(name = "feciniciocont")
+    @Column(name = "fecinicontrato")
     private String fechainic;
 
     @Column(name = "fecfincontrato")

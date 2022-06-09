@@ -97,6 +97,7 @@ public class InfoController {
             inf2 += em.getApellido2() + "\n";
             inf2 += em.getNif() + "\n";
             inf2 += em.getNus() + "\n";
+            inf2 += em.getTipoContrato()+ "\n";
             inf2 += em.getFechainic() + "\n";
             inf2 += em.getFechafinc() + "\n";
             inf2 += em.getIdempresa() + "\n";
@@ -120,6 +121,7 @@ public class InfoController {
             inf2 += em.getApellido2() + "\n";
             inf2 += em.getNif() + "\n";
             inf2 += em.getNus() + "\n";
+            inf2 += em.getTipoContrato()+ "\n";
             inf2 += em.getFechainic() + "\n";
             inf2 += em.getFechafinc() + "\n";
             inf2 += em.getIdempresa() + "\n";

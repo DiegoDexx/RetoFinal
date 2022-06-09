@@ -141,4 +141,17 @@ public class InfoController {
         Nomina nomina = servicenomina.getNominaInfo(request);
         return ResponseEntity.ok(nomina);
     }
+    
+    @GetMapping("/nominas/{id}")
+    public ResponseEntity<Nomina> NominaInfoById(@PathVariable("id") Long id) {
+          
+        Nomina nomi = servicenomina.getNominaById(id);
+        if (nomi!=null ){
+         //PODRIAMOS PONER AQUI QUE GENERE UN PDF POR ID, POR SI NOS PREGUNTAN EN LA EXPOSICION
+        }
+        
+  
+      return ResponseEntity.ok(nomi);
+    
+    }
 }

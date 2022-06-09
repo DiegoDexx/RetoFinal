@@ -26,7 +26,9 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "nombretrab")
+   
+    
+    @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "apellido1")
@@ -44,7 +46,7 @@ public class Empleado {
     @Column(name = "tipocontrato")
     private String tipoContrato;
 
-    @Column(name = "fecinicontrato")
+    @Column(name = "feciniciocont")
     private String fechainic;
 
     @Column(name = "fecfincontrato")
@@ -155,5 +157,7 @@ public class Empleado {
     public void setIrpf(int irpf) {
         this.irpf = irpf;
     }
+    
+    
 
 }

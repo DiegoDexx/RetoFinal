@@ -32,13 +32,13 @@ public class Nomina {
     @Column(name = "nomempresanomina")
     private String nombreEmpresaNomina;
 
-    @Column(name = "direccionempresanomina")
+    @Column(name = "direccionempresa")
     private String domicilioEmpresaNomina;
 
-    @Column(name = "cifempresanomina")
+    @Column(name = "cifempresa")
     private String cifEmpresaNomina;
 
-    @Column(name = "cccempresanomina")
+    @Column(name = "cccempresa")
     private String cccEmpresaNomina;
 
     // EMPLEADO //

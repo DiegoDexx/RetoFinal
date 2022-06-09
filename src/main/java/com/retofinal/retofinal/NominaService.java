@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -273,4 +274,27 @@ public class NominaService {
         }
         return nom;
     }
+    
+    public Nomina getNominaById(Long idnomina){ 
+    
+       Optional<Nomina> nomina = repositoryn.findById(idnomina);
+
+        if (nomina.isPresent()) {
+            return nomina.get();
+        } else {
+            System.err.println("No existe dicha nomina con ese id");
+            return null;
+        }
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

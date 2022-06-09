@@ -203,7 +203,9 @@ public class NominaService {
                                             
                                             //Aportaciones empresa
                                             
-                                            //En la parte de las contingencias comunes, hay que plantearlo de otra manera.
+                                            //La base sobre la que se calcula la parte que aporta las contingencias comunes, es la misma que aparece en nom.getContingenciasComunes();
+                                            //El porcentaje en este caso, lo voy a añadir directamente por programacion, ya que no existe una variable para guardarlo
+                                            nom.setResultadoBaseContingenciasComunes(nom.getContingenciasComunes() * 23.60 / 100);
                                             
                                             nom.setAccidenteTrabajoYEnfermedadProfesional(nom.getDesempleo());
                                             nom.setPorcentajeAccidenteTrabajoYEnfermedadProfesional(2); //Dependiendo la activaidad de la empresa, el numero varia.
@@ -226,8 +228,7 @@ public class NominaService {
                                             nom.setResultadoHorasExtraEmpresa(nom.getHorasExtraEmpresa() * nom.getPorcentajeHorasExtraEmpresa() / 100);
                                             
                                             //Total aportaciones empresa
-                                            //Falta sumar las contingencias comunes de la empresa.
-                                            nom.setTotalAportacionesEmpresa(nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() + nom.getResultadoDesempleoEmpresa() + nom.getResultadoFpEmpresa() + nom.getResultadoFogasa() + nom.getResultadoHorasExtraEmpresa());
+                                            nom.setTotalAportacionesEmpresa(nom.getResultadoBaseContingenciasComunes() + nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() + nom.getResultadoDesempleoEmpresa() + nom.getResultadoFpEmpresa() + nom.getResultadoFogasa() + nom.getResultadoHorasExtraEmpresa());
                                         }
                                     }
                                 }

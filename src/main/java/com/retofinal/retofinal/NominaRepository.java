@@ -23,8 +23,8 @@ public interface NominaRepository extends JpaRepository<Nomina, Long>{
     @Override
     Optional<Nomina> findById(Long id);
     
-    // @Override
-   // List <Nomina> findAll();
+     @Override
+    List <Nomina> findAll();
 
     }
     

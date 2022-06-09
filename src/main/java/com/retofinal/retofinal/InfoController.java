@@ -4,6 +4,8 @@
  */
 package com.retofinal.retofinal;
 
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -155,5 +157,10 @@ public class InfoController {
   
       return ResponseEntity.ok(nomi);
     
+    }
+    
+    @GetMapping("/crearPdf")
+    public void crearPdf() throws FileNotFoundException, DocumentException{
+        servicenomina.crearPdf();
     }
 }

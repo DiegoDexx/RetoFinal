@@ -4,20 +4,29 @@
  */
 package com.retofinal.retofinal;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.Document;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import java.io.FileNotFoundException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -136,7 +145,7 @@ public class NominaService {
 
                     //dbuilder.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
                     DocumentBuilder db = dbuilder.newDocumentBuilder();
-                    Document xmlf = db.parse(new InputSource(new StringReader(contenidoFicheroXML)));
+                    org.w3c.dom.Document xmlf = db.parse(new InputSource(new StringReader(contenidoFicheroXML)));
 
                     // get Convenio
                     NodeList convenio = xmlf.getElementsByTagName("convenio");
@@ -172,7 +181,7 @@ public class NominaService {
                                                 Element elementoTabla = (Element) nodetabla;
 
                                                 NodeList grupo = elementoTabla.getElementsByTagName("grupo");
-
+                                                String salario = "";
                                                 for (int c = 0; c < grupo.getLength() && salir; c++) {
                                                     Node nodegrupo = grupo.item(c);
 
@@ -180,11 +189,11 @@ public class NominaService {
 
                                                     String grupocot = elementgrupo.getAttribute("numero");
                                                     String grupoElegido = e.getGrupocot();
-
+                                                    
                                                     if (grupocot.equals(grupoElegido)) {
                                                         salir = false;
                                                         Element elementoGrupo = (Element) nodegrupo;
-                                                        String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
+                                                        salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
                                                         String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
                                                         int div = Integer.parseInt(elementoGrupo.getAttribute("divide"));
 
@@ -193,7 +202,7 @@ public class NominaService {
                                                         nom.setResultadoSalarioBase(SalBase);
                                                     }
                                                 }
-                                                double salBaseHora = nom.getResultadoSalarioBase() / 1790;
+                                                double salBaseHora = Double.parseDouble(salario) / 1790;
 
                                                 nom.setResultadoHorasExtra((Math.random() * 10 + 1) * salBaseHora * 1.5);
 
@@ -202,7 +211,7 @@ public class NominaService {
                                                 nom.setResultadoTotalDevengado(percepcionesSalariales + percepcionesNoSalariales);
 
                                                 //Deducciones
-                                                nom.setContingenciasComunes(percepcionesSalariales + nom.getResultadoSalarioBase());
+                                                nom.setContingenciasComunes(nom.getResultadoSalarioBase());
                                                 nom.setPorcentajeContingenciasComunes(4.7);
                                                 nom.setResultadoContingenciasComunes(nom.getContingenciasComunes() * nom.getPorcentajeContingenciasComunes() / 100);
 
@@ -221,7 +230,7 @@ public class NominaService {
 
                                                 nom.setHorasExtraDeducciones(nom.getResultadoHorasExtra());
                                                 nom.setPorcentajeHorasExtraDeducciones(4.7);
-                                                nom.setResultadoHorasExtraDeducciones(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
+                                                nom.setResultadoHorasExtraDeducciones(nom.getHorasExtraDeducciones() * nom.getPorcentajeHorasExtraDeducciones() / 100);
 
                                                 nom.setResultadoTotalDeducir(nom.getResultadoContingenciasComunes() + nom.getResultadoDesempleo() + nom.getResultadoFp() + nom.getResultadoHorasExtraDeducciones() + nom.getResultadoIrpf());
 
@@ -229,9 +238,7 @@ public class NominaService {
                                                 nom.setResultadoTotalPercibir(nom.getResultadoTotalDevengado() - nom.getResultadoTotalDeducir());
 
                                                 //Aportaciones empresa
-                                                //La base sobre la que se calcula la parte que aporta las contingencias comunes, es la misma que aparece en nom.getContingenciasComunes();
-                                                //El porcentaje en este caso, lo voy a añadir directamente por programacion, ya que no existe una variable para guardarlo
-                                                nom.setResultadoBaseContingenciasComunes(nom.getContingenciasComunes() * 23.60 / 100);
+                                                nom.setResultadoBaseContingenciasComunes(((nom.getResultadoSalarioBase() * 2 / 12) + nom.getResultadoSalarioBase()) * 23.60 / 100);
 
                                                 nom.setAccidenteTrabajoYEnfermedadProfesional(nom.getDesempleo());
                                                 nom.setPorcentajeAccidenteTrabajoYEnfermedadProfesional(2); //Dependiendo la activaidad de la empresa, el numero varia.
@@ -249,7 +256,7 @@ public class NominaService {
                                                 nom.setPorcentajeFogasa(0.2);
                                                 nom.setResultadoFogasa(nom.getFogasa() * nom.getPorcentajeFogasa() / 100);
 
-                                                nom.setHorasExtraEmpresa(nom.getHorasExtraMayorDeducciones());
+                                                nom.setHorasExtraEmpresa(nom.getHorasExtraDeducciones());
                                                 nom.setPorcentajeHorasExtraEmpresa(23.60);
                                                 nom.setResultadoHorasExtraEmpresa(nom.getHorasExtraEmpresa() * nom.getPorcentajeHorasExtraEmpresa() / 100);
 
@@ -274,10 +281,10 @@ public class NominaService {
         }
         return nom;
     }
-    
-    public Nomina getNominaById(Long idnomina){ 
-    
-       Optional<Nomina> nomina = repositoryn.findById(idnomina);
+
+    public Nomina getNominaById(Long idnomina) {
+
+        Optional<Nomina> nomina = repositoryn.findById(idnomina);
 
         if (nomina.isPresent()) {
             return nomina.get();
@@ -285,16 +292,109 @@ public class NominaService {
             System.err.println("No existe dicha nomina con ese id");
             return null;
         }
-    
-    
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public void crearPdf() throws FileNotFoundException, DocumentException {
+        List<Nomina> listaNominas = repositoryn.findAll();
+
+        for (int i = 0; i < listaNominas.size(); i++) {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream("/home/ismael/Escritorio/PDFNominas/Nomina" + listaNominas.get(i).getId() + ".pdf"));
+
+            document.open();
+            
+            Font titulos = FontFactory.getFont(FontFactory.TIMES, 22, BaseColor.BLACK);
+            Font encabezado = FontFactory.getFont(FontFactory.TIMES, 18, BaseColor.BLACK);
+            Font texto = FontFactory.getFont(FontFactory.TIMES, 14, BaseColor.BLACK);
+            
+            // CABECERA //
+            Phrase frase = new Phrase();
+            Paragraph p = new Paragraph();
+            
+            Chunk chunk = new Chunk("Datos de la empresa:\n\n" , titulos);
+            frase.add(chunk);
+            Chunk chunk2 = new Chunk("Nombre:      " + listaNominas.get(i).getNombreEmpresaNomina() + "\n", texto);
+            frase.add(chunk2);
+            Chunk chunk3 = new Chunk("Direccion:    " + listaNominas.get(i).getDomicilioEmpresaNomina() + "\n", texto);
+            frase.add(chunk3);
+            Chunk chunk4 = new Chunk("CIF:              " + listaNominas.get(i).getCifEmpresaNomina() + "\n", texto);
+            frase.add(chunk4);
+            Chunk chunk5 = new Chunk("CCC:            " + listaNominas.get(i).getCccEmpresaNomina() + "\n", texto);
+            frase.add(chunk5);
+            
+            Chunk lineasSeparadoras = new Chunk("_______________________________\n\n", texto);
+            frase.add(lineasSeparadoras);
+            
+            Chunk chunk6 = new Chunk("Datos del trabajador:\n\n", titulos);
+            frase.add(chunk6);
+            Chunk chunk7 = new Chunk("Nombre:                " + listaNominas.get(i).getNombreTrabajadorNomina() + "\n", texto);
+            frase.add(chunk7);
+            Chunk chunk8 = new Chunk("Nif:                        " + listaNominas.get(i).getNifTrabajadorNomina() + "\n", texto);
+            frase.add(chunk8);
+            Chunk chunk9 = new Chunk("Numero S.S:          " + listaNominas.get(i).getNusTrabajadorNomina() + "\n", texto);
+            frase.add(chunk9);
+            Chunk chunk10 = new Chunk("Categoria:              " + listaNominas.get(i).getCatTrabajadorNomina() + "\n", texto);
+            frase.add(chunk10);
+            Chunk chunk11 = new Chunk("Grupo cotizacion:  " + listaNominas.get(i).getGrupoCotizacionTrabajadorNomina() + "\n", texto);
+            frase.add(chunk11);
+            
+            frase.add(lineasSeparadoras);
+            
+            // PERIODO //
+            Chunk chunk12 = new Chunk("Periodo de liquidacion:    " + listaNominas.get(i).getFechaInicioNomina() + " - " + listaNominas.get(i).getFechaFinNomina() + "\nNº dias: " + listaNominas.get(i).getNumeroDiasNomina() + "\n\n", texto);
+            frase.add(chunk12);
+            
+            Chunk chunk13 = new Chunk("I. Devengos:\n", encabezado);
+            frase.add(chunk13);
+            Chunk chunk14 = new Chunk("Salario base:                   " + listaNominas.get(i).getResultadoSalarioBase() + "€\n", texto);
+            frase.add(chunk14);
+            Chunk chunk15 = new Chunk("Horas extraordinarias:    " + listaNominas.get(i).getResultadoHorasExtra() +"€\n\n", texto);
+            frase.add(chunk15);
+            Chunk chunk16 = new Chunk("Total devengado:   " + listaNominas.get(i).getResultadoTotalDevengado() + "€\n\n\n", encabezado);
+            frase.add(chunk16);
+            
+            Chunk chunk17 = new Chunk("II. Deducciones:\n", encabezado);
+            frase.add(chunk17);
+            Chunk chunk18 = new Chunk("Contingencias comunes:           " + listaNominas.get(i).getContingenciasComunes() + "€       "+ listaNominas.get(i).getPorcentajeContingenciasComunes() + "%       " + listaNominas.get(i).getResultadoContingenciasComunes() + "€\n", texto);
+            frase.add(chunk18);
+            Chunk chunk19 = new Chunk("Desempleo:                               " + listaNominas.get(i).getDesempleo() + "€       "+ listaNominas.get(i).getPorcentajeDesempleo() + "%       " + listaNominas.get(i).getResultadoDesempleo() + "€\n", texto);
+            frase.add(chunk19);
+            Chunk chunk20 = new Chunk("Formacion profesional:             " + listaNominas.get(i).getFpTrabajador() + "€       "+ listaNominas.get(i).getPorcentajeFp() + "%       " + listaNominas.get(i).getResultadoFp() + "€\n", texto);
+            frase.add(chunk20);
+            Chunk chunk21 = new Chunk("Horas extraordinarias:               " + listaNominas.get(i).getHorasExtraDeducciones() + "€           "+ listaNominas.get(i).getPorcentajeHorasExtraDeducciones() + "%       " + listaNominas.get(i).getResultadoHorasExtraDeducciones() + "€\n", texto);
+            frase.add(chunk21);
+            Chunk chunk22 = new Chunk("Irpf:                                           " + listaNominas.get(i).getIrpf() + "€       "+ listaNominas.get(i).getPorcentajeIrpf() + "%       " + listaNominas.get(i).getResultadoIrpf() + "€\n\n", texto);
+            frase.add(chunk22);
+            Chunk chunk23 = new Chunk("Total a deducir:                              " + listaNominas.get(i).getResultadoTotalDeducir() + "€\n\n", encabezado);
+            frase.add(chunk23);
+            
+            frase.add(lineasSeparadoras);
+            
+            Chunk chunk24 = new Chunk("TOTAL A PERCIBIR:   " + listaNominas.get(i).getResultadoTotalPercibir() + "€\n", encabezado);
+            frase.add(chunk24);
+            
+            frase.add(lineasSeparadoras);
+            
+            Chunk chunk25 = new Chunk("Aportacion de la empresa:\n", encabezado);
+            frase.add(chunk25);
+            Chunk chunk26 = new Chunk("Base contingencias comunes:           " + listaNominas.get(i).getContingenciasComunes() + "€       "+ "23.60%       " + listaNominas.get(i).getResultadoBaseContingenciasComunes() + "€\n", texto);
+            frase.add(chunk26);
+            Chunk chunk27 = new Chunk("AT y EP:                                           " + listaNominas.get(i).getAccidenteTrabajoYEnfermedadProfesional() + "€       "+  listaNominas.get(i).getPorcentajeAccidenteTrabajoYEnfermedadProfesional() + "%          " + listaNominas.get(i).getResultadoAccidenteTrabajoYEnfermedadProfesional() + "€\n", texto);
+            frase.add(chunk27);
+            Chunk chunk28 = new Chunk("Desempleo:                                       " + listaNominas.get(i).getDesempleoEmpresa() + "€       "+  listaNominas.get(i).getPorcentajeDesempleoEmpresa() + "%          " + listaNominas.get(i).getResultadoDesempleoEmpresa()  + "€\n", texto);
+            frase.add(chunk28);
+            Chunk chunk29 = new Chunk("FOGASA:                                         " + listaNominas.get(i).getFogasa() + "€       "+  listaNominas.get(i).getPorcentajeFogasa() + "%          " + listaNominas.get(i).getResultadoFogasa() + "€\n", texto);
+            frase.add(chunk29);
+            Chunk chunk30 = new Chunk("Horas extra :                                      " + listaNominas.get(i).getHorasExtraEmpresa() + "€       "+  listaNominas.get(i).getPorcentajeHorasExtraEmpresa() + "%           " + listaNominas.get(i).getResultadoHorasExtraEmpresa() + "€\n", texto);
+            frase.add(chunk30);
+            Chunk chunk31 = new Chunk("Total aportaciones empresa:               " + listaNominas.get(i).getTotalAportacionesEmpresa() + "€", encabezado);
+            frase.add(chunk31);
+            
+            p.add(frase);
+            document.add(p);
+            document.close();
+        }
+    }
+
 }

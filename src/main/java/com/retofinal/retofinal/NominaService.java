@@ -75,177 +75,201 @@ public class NominaService {
 
         for (Empleado e : listaEmpleados) {
 
-            Empresa empr = repositoryEmpresa.findById(e.getIdempresa()).get();
+            for (Integer mes = 1; mes < 6; mes++) {
 
-            // DATOS EMPRESA //
-            nom.setNombreEmpresaNomina(empr.getnombreempresa());
-            nom.setDomicilioEmpresaNomina(empr.getDomicilio());
-            nom.setCifEmpresaNomina(empr.getCif());
-            nom.setCccEmpresaNomina(empr.getCcc());
+                Integer primerDia = 1;
+                Integer ultimoDia;
+                switch (mes) {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        ultimoDia = 31;
+                        break;
+                    case 2:
+                        ultimoDia = 28;
+                        break;
+                    default:
+                        ultimoDia = 30;
+                        break;
 
-            // DATOS TRABAJADOR //
-            nom.setIdEmpleado(e.getId());
-            nom.setNombreTrabajadorNomina(e.getNombre() + " " + e.getApellido1() + " " + e.getApellido2());
-            nom.setNifTrabajadorNomina(e.getNif());
-            nom.setNusTrabajadorNomina(e.getNus());
-            nom.setGrupoCotizacionTrabajadorNomina(e.getGrupocot());
+                }
 
-            // DATOS NOMINA //
-            // PERIODO //
-            if (nom.getId() == null) {
-                nom.setId(1L);
-            } else {
-                nom.setId(nom.getId() + 1);
-            }
-            nom.setFechaInicioNomina("2022/06/01");
-            nom.setFechaFinNomina("2022/06/30");
-            nom.setNumeroDiasNomina(nom.getNumeroDiasNomina());
+                if (mes < 10) {
+                    nom.setFechaInicioNomina("2022/0" + mes.toString() + "/0" + primerDia.toString());
+                    nom.setFechaFinNomina("2022/0" + mes.toString() + "/" + ultimoDia.toString());
+                } else {
+                    nom.setFechaInicioNomina("2022/" + mes + "/0" + primerDia);
+                    nom.setFechaFinNomina("2022/" + mes + "/" + ultimoDia);
+                }
+                nom.setNumeroDiasNomina(ultimoDia);
 
-            // DEVENGOS //
-//        resultadoSalarioBase = 
-            try {
-                boolean salir = true;
+                Empresa empr = repositoryEmpresa.findById(e.getIdempresa()).get();
 
-                //dbuilder.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-                DocumentBuilder db = dbuilder.newDocumentBuilder();
-                Document xmlf = db.parse(new InputSource(new StringReader(contenidoFicheroXML)));
+                // DATOS EMPRESA //
+                nom.setNombreEmpresaNomina(empr.getnombreempresa());
+                nom.setDomicilioEmpresaNomina(empr.getDomicilio());
+                nom.setCifEmpresaNomina(empr.getCif());
+                nom.setCccEmpresaNomina(empr.getCcc());
 
-                // get Convenio
-                NodeList convenio = xmlf.getElementsByTagName("convenio");
+                // DATOS TRABAJADOR //
+                nom.setIdEmpleado(e.getId());
+                nom.setNombreTrabajadorNomina(e.getNombre() + " " + e.getApellido1() + " " + e.getApellido2());
+                nom.setNifTrabajadorNomina(e.getNif());
+                nom.setNusTrabajadorNomina(e.getNus());
+                nom.setGrupoCotizacionTrabajadorNomina(e.getGrupocot());
 
-                for (int a = 0; salir && a < convenio.getLength(); a++) {
-                    Node nodoConvenio = convenio.item(a);
+                // DATOS NOMINA //
+                // PERIODO //
+                if (nom.getId() == null) {
+                    nom.setId(1L);
+                } else {
+                    nom.setId(nom.getId() + 1);
+                }
 
-                    if (nodoConvenio.getNodeType() == Node.ELEMENT_NODE) {
-                        Element elementoConvenio = (Element) nodoConvenio;
+                try {
+                    boolean salir = true;
 
-                        NodeList infor = elementoConvenio.getElementsByTagName("informacion");
+                    //dbuilder.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+                    DocumentBuilder db = dbuilder.newDocumentBuilder();
+                    Document xmlf = db.parse(new InputSource(new StringReader(contenidoFicheroXML)));
 
-                        for (int inf = 0; inf < infor.getLength() && salir; inf++) {
-                            Node nodoInfor = convenio.item(inf);
-                            Element elementoInfor = (Element) nodoInfor;
-                            String nombreConvenio = elementoInfor.getElementsByTagName("nombre").item(0).getTextContent();
-                            String nomConvenio = empr.getConvenio();
+                    // get Convenio
+                    NodeList convenio = xmlf.getElementsByTagName("convenio");
 
-                            if (nombreConvenio.equals(nomConvenio)) {
+                    for (int a = 0; salir && a < convenio.getLength(); a++) {
+                        Node nodoConvenio = convenio.item(a);
 
-                                NodeList tablasalarial = elementoConvenio.getElementsByTagName("tabla_salarial");
+                        if (nodoConvenio.getNodeType() == Node.ELEMENT_NODE) {
+                            Element elementoConvenio = (Element) nodoConvenio;
 
-                                for (int b = 0; b < tablasalarial.getLength() && salir; b++) {
-                                    Node nodetabla = tablasalarial.item(b);
+                            NodeList infor = elementoConvenio.getElementsByTagName("informacion");
 
-                                    Element elementanyo = (Element) nodetabla;
-                                    String anyo = elementanyo.getAttribute("anyo");
-                                    String year = "2022";
+                            for (int inf = 0; inf < infor.getLength() && salir; inf++) {
+                                Node nodoInfor = convenio.item(inf);
+                                Element elementoInfor = (Element) nodoInfor;
+                                String nombreConvenio = elementoInfor.getElementsByTagName("nombre").item(0).getTextContent();
+                                String nomConvenio = empr.getConvenio();
 
-                                    if (anyo.equals(year)) {
+                                if (nombreConvenio.equals(nomConvenio)) {
 
-                                        if (nodetabla.getNodeType() == Node.ELEMENT_NODE) {
-                                            Element elementoTabla = (Element) nodetabla;
+                                    NodeList tablasalarial = elementoConvenio.getElementsByTagName("tabla_salarial");
 
-                                            NodeList grupo = elementoTabla.getElementsByTagName("grupo");
+                                    for (int b = 0; b < tablasalarial.getLength() && salir; b++) {
+                                        Node nodetabla = tablasalarial.item(b);
 
-                                            for (int c = 0; c < grupo.getLength() && salir; c++) {
-                                                Node nodegrupo = grupo.item(c);
+                                        Element elementanyo = (Element) nodetabla;
+                                        String anyo = elementanyo.getAttribute("anyo");
+                                        String year = "2022";
 
-                                                Element elementgrupo = (Element) nodegrupo;
+                                        if (anyo.equals(year)) {
 
-                                                String grupocot = elementgrupo.getAttribute("numero");
-                                                String grupoElegido = e.getGrupocot();
+                                            if (nodetabla.getNodeType() == Node.ELEMENT_NODE) {
+                                                Element elementoTabla = (Element) nodetabla;
 
-                                                if (grupocot.equals(grupoElegido)) {
-                                                    salir = false;
-                                                    Element elementoGrupo = (Element) nodegrupo;
-                                                    String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
-                                                    String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
-                                                    int div = Integer.parseInt(elementoGrupo.getAttribute("divide"));
+                                                NodeList grupo = elementoTabla.getElementsByTagName("grupo");
 
-                                                    nom.setCatTrabajadorNomina(catProf);
-                                                    Double SalBase = (Double.parseDouble(salario)) / div;
-                                                    nom.setResultadoSalarioBase(SalBase);
+                                                for (int c = 0; c < grupo.getLength() && salir; c++) {
+                                                    Node nodegrupo = grupo.item(c);
+
+                                                    Element elementgrupo = (Element) nodegrupo;
+
+                                                    String grupocot = elementgrupo.getAttribute("numero");
+                                                    String grupoElegido = e.getGrupocot();
+
+                                                    if (grupocot.equals(grupoElegido)) {
+                                                        salir = false;
+                                                        Element elementoGrupo = (Element) nodegrupo;
+                                                        String salario = elementoGrupo.getElementsByTagName("salario_base").item(0).getTextContent();
+                                                        String catProf = elementoGrupo.getElementsByTagName("categoria").item(0).getTextContent();
+                                                        int div = Integer.parseInt(elementoGrupo.getAttribute("divide"));
+
+                                                        nom.setCatTrabajadorNomina(catProf);
+                                                        Double SalBase = (Double.parseDouble(salario)) / div;
+                                                        nom.setResultadoSalarioBase(SalBase);
+                                                    }
                                                 }
+                                                double salBaseHora = nom.getResultadoSalarioBase() / 1790;
+
+                                                nom.setResultadoHorasExtra((Math.random() * 10 + 1) * salBaseHora * 1.5);
+
+                                                double percepcionesSalariales = nom.getResultadoSalarioBase() + nom.getResultadoHorasExtra() + nom.getResultadoHorasComplementarias() + nom.getResultadoHorasExtraMayor();
+                                                double percepcionesNoSalariales = nom.getResultadoAyudaEspecial() + nom.getResultadoTransporte() + nom.getResultadoTeletrabajo() + nom.getResultadoDieta() + nom.getResultadoDietaMedia();
+                                                nom.setResultadoTotalDevengado(percepcionesSalariales + percepcionesNoSalariales);
+
+                                                //Deducciones
+                                                nom.setContingenciasComunes(percepcionesSalariales + nom.getResultadoSalarioBase());
+                                                nom.setPorcentajeContingenciasComunes(4.7);
+                                                nom.setResultadoContingenciasComunes(nom.getContingenciasComunes() * nom.getPorcentajeContingenciasComunes() / 100);
+
+                                                //Falta sacar los datos del porcentaje de desempleo del otro xml, por ahora, siempre toma el mismo valor.
+                                                nom.setDesempleo(nom.getContingenciasComunes() + nom.getResultadoHorasExtra());
+                                                nom.setPorcentajeDesempleo(1.55);
+                                                nom.setResultadoDesempleo(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
+
+                                                nom.setFpTrabajador(nom.getDesempleo());
+                                                nom.setPorcentajeFp(0.1);
+                                                nom.setResultadoFp(nom.getFpTrabajador() * nom.getPorcentajeFp() / 100);
+
+                                                nom.setIrpf(nom.getDesempleo());
+                                                nom.setPorcentajeIrpf(12); //Se ha establecido a 12, pero depende de las circunstancias del trabajador.
+                                                nom.setResultadoIrpf(nom.getIrpf() * nom.getPorcentajeIrpf() / 100);
+
+                                                nom.setHorasExtraDeducciones(nom.getResultadoHorasExtra());
+                                                nom.setPorcentajeHorasExtraDeducciones(4.7);
+                                                nom.setResultadoHorasExtraDeducciones(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
+
+                                                nom.setResultadoTotalDeducir(nom.getResultadoContingenciasComunes() + nom.getResultadoDesempleo() + nom.getResultadoFp() + nom.getResultadoHorasExtraDeducciones() + nom.getResultadoIrpf());
+
+                                                //Total a percibir
+                                                nom.setResultadoTotalPercibir(nom.getResultadoTotalDevengado() - nom.getResultadoTotalDeducir());
+
+                                                //Aportaciones empresa
+                                                //La base sobre la que se calcula la parte que aporta las contingencias comunes, es la misma que aparece en nom.getContingenciasComunes();
+                                                //El porcentaje en este caso, lo voy a añadir directamente por programacion, ya que no existe una variable para guardarlo
+                                                nom.setResultadoBaseContingenciasComunes(nom.getContingenciasComunes() * 23.60 / 100);
+
+                                                nom.setAccidenteTrabajoYEnfermedadProfesional(nom.getDesempleo());
+                                                nom.setPorcentajeAccidenteTrabajoYEnfermedadProfesional(2); //Dependiendo la activaidad de la empresa, el numero varia.
+                                                nom.setResultadoAccidenteTrabajoYEnfermedadProfesional(nom.getAccidenteTrabajoYEnfermedadProfesional() * nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() / 100);
+
+                                                nom.setDesempleoEmpresa(nom.getDesempleo());
+                                                nom.setPorcentajeDesempleoEmpresa(5.5); //En determinadas circunstancias puede tomar otro valor, se toma del otro xml.
+                                                nom.setResultadoDesempleoEmpresa(nom.getDesempleoEmpresa() * nom.getPorcentajeDesempleoEmpresa() / 100);
+
+                                                nom.setFp(nom.getDesempleo());
+                                                nom.setPorcentajeFpEmpresa(0.6);
+                                                nom.setResultadoFpEmpresa(nom.getFp() * nom.getPorcentajeFpEmpresa() / 100);
+
+                                                nom.setFogasa(nom.getDesempleo());
+                                                nom.setPorcentajeFogasa(0.2);
+                                                nom.setResultadoFogasa(nom.getFogasa() * nom.getPorcentajeFogasa() / 100);
+
+                                                nom.setHorasExtraEmpresa(nom.getHorasExtraMayorDeducciones());
+                                                nom.setPorcentajeHorasExtraEmpresa(23.60);
+                                                nom.setResultadoHorasExtraEmpresa(nom.getHorasExtraEmpresa() * nom.getPorcentajeHorasExtraEmpresa() / 100);
+
+                                                //Total aportaciones empresa
+                                                nom.setTotalAportacionesEmpresa(nom.getResultadoBaseContingenciasComunes() + nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() + nom.getResultadoDesempleoEmpresa() + nom.getResultadoFpEmpresa() + nom.getResultadoFogasa() + nom.getResultadoHorasExtraEmpresa());
                                             }
-                                            double salBaseHora = nom.getResultadoSalarioBase() / 1790;
-
-                                            nom.setResultadoHorasExtra((Math.random() * 10 + 1) * salBaseHora * 1.5);
-
-                                            double percepcionesSalariales = nom.getResultadoSalarioBase() + nom.getResultadoHorasExtra() + nom.getResultadoHorasComplementarias() + nom.getResultadoHorasExtraMayor();
-                                            double percepcionesNoSalariales = nom.getResultadoAyudaEspecial() + nom.getResultadoTransporte() + nom.getResultadoTeletrabajo() + nom.getResultadoDieta() + nom.getResultadoDietaMedia();
-                                            nom.setResultadoTotalDevengado(percepcionesSalariales + percepcionesNoSalariales);
-                                            
-                                            //Deducciones
-                                            nom.setContingenciasComunes(percepcionesSalariales + nom.getResultadoSalarioBase());
-                                            nom.setPorcentajeContingenciasComunes(4.7);
-                                            nom.setResultadoContingenciasComunes(nom.getContingenciasComunes() * nom.getPorcentajeContingenciasComunes() / 100);
-                                            
-                                            //Falta sacar los datos del porcentaje de desempleo del otro xml, por ahora, siempre toma el mismo valor.
-                                            
-                                            nom.setDesempleo(nom.getContingenciasComunes() + nom.getResultadoHorasExtra());
-                                            nom.setPorcentajeDesempleo(1.55);
-                                            nom.setResultadoDesempleo(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
-                                            
-                                            nom.setFpTrabajador(nom.getDesempleo());
-                                            nom.setPorcentajeFp(0.1);
-                                            nom.setResultadoFp(nom.getFpTrabajador() * nom.getPorcentajeFp() / 100);
-                                            
-                                            nom.setIrpf(nom.getDesempleo());
-                                            nom.setPorcentajeIrpf(12); //Se ha establecido a 12, pero depende de las circunstancias del trabajador.
-                                            nom.setResultadoIrpf(nom.getIrpf() * nom.getPorcentajeIrpf() / 100);
-                                            
-                                            nom.setHorasExtraDeducciones(nom.getResultadoHorasExtra());
-                                            nom.setPorcentajeHorasExtraDeducciones(4.7);
-                                            nom.setResultadoHorasExtraDeducciones(nom.getDesempleo() * nom.getPorcentajeDesempleo() / 100);
-                                            
-                                            nom.setResultadoTotalDeducir(nom.getResultadoContingenciasComunes() + nom.getResultadoDesempleo() + nom.getResultadoFp() + nom.getResultadoHorasExtraDeducciones() + nom.getResultadoIrpf());
-                                            
-                                            //Total a percibir
-                                            nom.setResultadoTotalPercibir(nom.getResultadoTotalDevengado() - nom.getResultadoTotalDeducir());
-                                            
-                                            //Aportaciones empresa
-                                            
-                                            //La base sobre la que se calcula la parte que aporta las contingencias comunes, es la misma que aparece en nom.getContingenciasComunes();
-                                            //El porcentaje en este caso, lo voy a añadir directamente por programacion, ya que no existe una variable para guardarlo
-                                            nom.setResultadoBaseContingenciasComunes(nom.getContingenciasComunes() * 23.60 / 100);
-                                            
-                                            nom.setAccidenteTrabajoYEnfermedadProfesional(nom.getDesempleo());
-                                            nom.setPorcentajeAccidenteTrabajoYEnfermedadProfesional(2); //Dependiendo la activaidad de la empresa, el numero varia.
-                                            nom.setResultadoAccidenteTrabajoYEnfermedadProfesional(nom.getAccidenteTrabajoYEnfermedadProfesional() * nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() / 100);
-                                            
-                                            nom.setDesempleoEmpresa(nom.getDesempleo());
-                                            nom.setPorcentajeDesempleoEmpresa(5.5); //En determinadas circunstancias puede tomar otro valor, se toma del otro xml.
-                                            nom.setResultadoDesempleoEmpresa(nom.getDesempleoEmpresa() * nom.getPorcentajeDesempleoEmpresa() / 100);
-                                            
-                                            nom.setFp(nom.getDesempleo());
-                                            nom.setPorcentajeFpEmpresa(0.6);
-                                            nom.setResultadoFpEmpresa(nom.getFp() * nom.getPorcentajeFpEmpresa() / 100);
-                                            
-                                            nom.setFogasa(nom.getDesempleo());
-                                            nom.setPorcentajeFogasa(0.2);
-                                            nom.setResultadoFogasa(nom.getFogasa() * nom.getPorcentajeFogasa() / 100);
-                                            
-                                            nom.setHorasExtraEmpresa(nom.getHorasExtraMayorDeducciones());
-                                            nom.setPorcentajeHorasExtraEmpresa(23.60);
-                                            nom.setResultadoHorasExtraEmpresa(nom.getHorasExtraEmpresa() * nom.getPorcentajeHorasExtraEmpresa() / 100);
-                                            
-                                            //Total aportaciones empresa
-                                            nom.setTotalAportacionesEmpresa(nom.getResultadoBaseContingenciasComunes() + nom.getResultadoAccidenteTrabajoYEnfermedadProfesional() + nom.getResultadoDesempleoEmpresa() + nom.getResultadoFpEmpresa() + nom.getResultadoFogasa() + nom.getResultadoHorasExtraEmpresa());
                                         }
                                     }
                                 }
+
                             }
 
                         }
 
                     }
 
+                } catch (ParserConfigurationException | SAXException | IOException ex) {
+                    System.err.println("Ups, Something  wrong! " + ex.getMessage());
                 }
-
-            } catch (ParserConfigurationException | SAXException | IOException ex) {
-                System.err.println("Ups, Something  wrong! " + ex.getMessage());
-
+                repositoryn.save(nom);
             }
-            repositoryn.save(nom);
-
         }
         return nom;
     }

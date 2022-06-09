@@ -6,8 +6,8 @@ USE reto_nomina;
 
 
 CREATE TABLE Empresa(
-    IdEmpresa INT PRIMARY KEY auto_increment,
-    nomEmpresa VARCHAR(100) NOT NULL,
+    id INT PRIMARY KEY auto_increment,
+    nomempresa VARCHAR(100) NOT NULL,
     direccion VARCHAR(100),
     convenio ENUM('CONVENIO COLECTIVO PROVINCIAL DE OFICINAS Y DESPACHOS DE ALICANTE','CONVENIO COLECTIVO ESTATAL DE LA INDUSTRIA, LAS NUEVAS TECNOLOGÍAS Y LOS SERVICIOS DEL SECTOR DEL METAL') NOT NULL,
     cif VARCHAR(20) UNIQUE NOT NULL,
@@ -15,135 +15,134 @@ CREATE TABLE Empresa(
 );
 
 CREATE TABLE Empleado(
-    IdEmpleado INT PRIMARY KEY auto_increment,
-    nombreTrab VARCHAR(100) NOT NULL,
+    id INT PRIMARY KEY auto_increment,
+    nombretrab VARCHAR(100) NOT NULL,
     apellido1 VARCHAR(100) NOT NULL,
     apellido2 VARCHAR(100),
     nif VARCHAR(9) UNIQUE NOT NULL,
     nus VARCHAR(12) UNIQUE NOT NULL,
-    tipoContrato ENUM('indefinido','temporal','formacion','practicas') NOT NULL, 
-    fecIniContrato DATE NOT NULL, 
-    fecFinContrato DATE, 
-    IdEmpresa INT,
-    CONSTRAINT fk_empresa_empleado FOREIGN KEY (IdEmpresa) REFERENCES Empresa (IdEmpresa) ON DELETE NO ACTION ON UPDATE CASCADE,
-    catProf VARCHAR(200), 
-    grupoCot VARCHAR(200), 
+    tipocontrato ENUM('indefinido','temporal','formacion','practicas') NOT NULL, 
+    fecinicontrato DATE NOT NULL, 
+    fecfincontrato DATE, 
+    idempresa INT,
+    CONSTRAINT fk_empresa_empleado FOREIGN KEY (idempresa) REFERENCES Empresa (id) ON DELETE NO ACTION ON UPDATE CASCADE,
+    grupocot VARCHAR(200), 
     irpf INT NOT NULL DEFAULT 2
 );
 
 CREATE TABLE Nomina(
-    IdNomina INT PRIMARY KEY auto_increment,
-    IdEmpleado INT,
-    CONSTRAINT fk_nomina_empleado FOREIGN KEY (IdEmpleado) REFERENCES Empleado (IdEmpleado) ON DELETE NO ACTION ON UPDATE CASCADE,
+    id INT PRIMARY KEY auto_increment,
+    idempleado INT,
+    CONSTRAINT fk_nomina_empleado FOREIGN KEY (idempleado) REFERENCES Empleado (id) ON DELETE NO ACTION ON UPDATE CASCADE,
 
     -- EMPRESA --
-    nomEmpresaNomina VARCHAR(100) NOT NULL,
-    direccionEmpresaNomina VARCHAR(100) NOT NULL,
-    cifEmpresaNomina INT NOT NULL,
-    cccEmpresaNomina INT NOT NULL,
+    nomempresanomina VARCHAR(100) NOT NULL,
+    direccionempresanomina VARCHAR(100) NOT NULL,
+    cifempresanomina VARCHAR(20) NOT NULL,
+    cccempresanomina VARCHAR(11) NOT NULL,
 
     -- EMPLEADO --
-    nomTrabNomina VARCHAR(100) NOT NULL,
-    nifTrabNomina VARCHAR(9) NOT NULL,
-    nufTrabNomina VARCHAR(12) NOT NULL,
-    catTrabNomina VARCHAR(200) NOT NULL,
-    grupCotTrabNomina VARCHAR(200) NOT NULL,
+    nomtrabnomina VARCHAR(100) NOT NULL,
+    niftrabnomina VARCHAR(9) NOT NULL,
+    nuftrabnomina VARCHAR(12) NOT NULL,
+    cattrabnomina VARCHAR(200) NOT NULL,
+    grupcottrabnomina VARCHAR(200) NOT NULL,
 
     -- PERIODO --
-    fecIniNomina DATE NOT NULL,
-    fecFinNomina DATE NOT NULL,
-    nDiasNomina INT NOT NULL,
+    fecininomina DATE NOT NULL,
+    fecfinnomina DATE NOT NULL,
+    ndiasnomina INT NOT NULL,
 
     -- DEVENGOS --
-    resSalBase DECIMAL(7,2) NOT NULL,
+    ressalbase DECIMAL(7,2) NOT NULL,
 
     -- Percepciones salariales --
-    resHorasComp DECIMAL(7,2),
-    resHorasExtra DECIMAL(7,2),
-    resHorasExtraMayor DECIMAL(7,2),
+    reshorascomp DECIMAL(7,2),
+    reshorasextra DECIMAL(7,2),
+    reshorasextramayor DECIMAL(7,2),
     -- Percepciones no salariales --
-    resAyudaEspecial DECIMAL(7,2),
-    resTransporte DECIMAL(7,2),
-    resTeletrabajo DECIMAL(7,2),
-    resDieta DECIMAL(7,2),
-    resDietaMedia DECIMAL(7,2),
+    resayudaespecial DECIMAL(7,2),
+    restransporte DECIMAL(7,2),
+    resteletrabajo DECIMAL(7,2),
+    resdieta DECIMAL(7,2),
+    resdietamedia DECIMAL(7,2),
 
-    resTotalDevengado DECIMAL(7,2) NOT NULL,
+    restotaldevengado DECIMAL(7,2) NOT NULL,
   
     -- DEDUCCIONES --
 
     -- APORTACIONES TRABAJADOR A LA S.S --
-    contingenciasComunes DECIMAL(7,2) NOT NULL,
-    porContingenciasComunes DECIMAL(7,2) NOT NULL,
-    resContingenciasComunes DECIMAL(7,2) NOT NULL,
+    contingenciascomunes DECIMAL(7,2) NOT NULL,
+    porcontingenciascomunes DECIMAL(7,2) NOT NULL,
+    rescontingenciascomunes DECIMAL(7,2) NOT NULL,
 
     desempleo DECIMAL(7,2) NOT NULL,
-    porDesempleo DECIMAL(7,2) NOT NULL,
-    resDesempleo DECIMAL(7,2) NOT NULL,
+    pordesempleo DECIMAL(7,2) NOT NULL,
+    resdesempleo DECIMAL(7,2) NOT NULL,
 
-    fpTrab DECIMAL(7,2) NOT NULL,
-    porFP DECIMAL(7,2) NOT NULL,
-    resFP DECIMAL(7,2) NOT NULL,
+    fptrab DECIMAL(7,2) NOT NULL,
+    porfp DECIMAL(7,2) NOT NULL,
+    resfp DECIMAL(7,2) NOT NULL,
 
-    horasExtraDeduc DECIMAL(7,2),
-    porHorasExtraDeduc DECIMAL(7,2) NOT NULL,
-    resHorasExtraDeduc DECIMAL(7,2),
+    horasextradeduc DECIMAL(7,2),
+    porhorasextradeduc DECIMAL(7,2) NOT NULL,
+    reshorasextradeduc DECIMAL(7,2),
 
-    horasExtraMayorDeduc DECIMAL(7,2),
-    porHorasExtraMayorDeduc DECIMAL(7,2) NOT NULL,
-    resHorasExtraMayorDeduc DECIMAL(7,2),
+    horasextramayordeduc DECIMAL(7,2),
+    porhorasextramayordeduc DECIMAL(7,2) NOT NULL,
+    reshorasextramayordeduc DECIMAL(7,2),
 
-    resTotalAportaciones DECIMAL(7,2) NOT NULL,
+    restotalaportaciones DECIMAL(7,2) NOT NULL,
     
 
     irpf DECIMAL(7,2) NOT NULL,
-    porIRPF INT NOT NULL,
-    resIRPF DECIMAL(7,2) NOT NULL,
+    porirpf INT NOT NULL,
+    resirpf DECIMAL(7,2) NOT NULL,
 
-    resTotalDeducir DECIMAL(7,2) NOT NULL,
+    restotaldeducir DECIMAL(7,2) NOT NULL,
 
     -- TOTAL A PERCIBIR --
-    resTotalPercibir DECIMAL(7,2) NOT NULL,
+    restotalpercibir DECIMAL(7,2) NOT NULL,
     
     
     -- APORTACION EMPRESA --
     -- Base de cotización por Contingencias Comunes --
-    resRemuneracionMensual DECIMAL(7,2),
-    resProrrataPagasExtra DECIMAL(7,2),
-    resBaseContingenciasComunes DECIMAL (7,2),
+    resremuneracionmensual DECIMAL(7,2),
+    resprorratapagasextra DECIMAL(7,2),
+    resbasecontingenciascomunes DECIMAL (7,2),
 
-    porTipoEmpresa DECIMAL(7,2),
-    aportacionEmpresa DECIMAL(7,2),
+    portipoempresa DECIMAL(7,2),
+    aportacionempresa DECIMAL(7,2),
 
     -- Base de contingencias profesionales --
-    ATyEP DECIMAL(7,2),
-    porATyEP DECIMAL(7,2),
-    resATyEP DECIMAL(7,2),
+    atyep DECIMAL(7,2),
+    poratyep DECIMAL(7,2),
+    resatyep DECIMAL(7,2),
 
-    desempleoEmpresa DECIMAL(7,2),
-    porDesempleoEmpresa DECIMAL(7,2),
-    resDesempleoEmpresa DECIMAL(7,2),
+    desempleoempresa DECIMAL(7,2),
+    pordesempleoempresa DECIMAL(7,2),
+    resdesempleoempresa DECIMAL(7,2),
 
-    FP DECIMAL(7,2),
-    porFPEmpresa DECIMAL(7,2),
-    resFPEmpresa DECIMAL(7,2),
+    fp DECIMAL(7,2),
+    porfpempresa DECIMAL(7,2),
+    resfpempresa DECIMAL(7,2),
 
-    FOGASA DECIMAL(7,2),
-    porFOGASA DECIMAL(7,2),
-    resFPGASA DECIMAL(7,2),
+    fogasa DECIMAL(7,2),
+    porfogasa DECIMAL(7,2),
+    resfogasa DECIMAL(7,2),
 
-    horasExtra DECIMAL(7,2),
-    porHorasExtra DECIMAL(7,2),
-    resHorasExtraEmpresa DECIMAL(7,2),
+    horasextra DECIMAL(7,2),
+    porhorasextra DECIMAL(7,2),
+    reshorasextraempresa DECIMAL(7,2),
 
-    horasExtraMayor DECIMAL(7,2),
-    porHorasExtraMayor DECIMAL(7,2),
-    resHorasExtraMayorEmpresa DECIMAL(7,2),
+    horasextramayor DECIMAL(7,2),
+    porhorasextramayor DECIMAL(7,2),
+    reshorasextramayorempresa DECIMAL(7,2),
 
-    baseIRPF DECIMAL(7,2),
+    baseirpf DECIMAL(7,2),
 
     -- TOTAL --
-    totalAportacionEmpresa DECIMAL(7,2)
+    totalaportacionempresa DECIMAL(7,2)
 );
 
 INSERT INTO Empresa
@@ -152,7 +151,6 @@ VALUES (NULL,'Abogados Lopez','Illueca 8','CONVENIO COLECTIVO PROVINCIAL DE OFIC
 ;
 
 INSERT INTO Empleado
-VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','XXX','3','4'),
-       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','XXX2','2','5'),
-       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','XXX3','7',DEFAULT)
-;
+VALUES (NULL,'Ismael','Molina','Ybarra','74439236S','123456789123','indefinido','2022/05/25',NULL,'1','4 2 A','4'),
+       (NULL,'Daniel','Soler','Alcala','33478997J','123789456123','practicas','2022/07/01',NULL,'1','3 1 B','5'),
+       (NULL,'Laura','Orts','Ramon','48756923J','789465132789','temporal','2022/05/25','2022/07/01','2','1 1',DEFAULT)

@@ -368,7 +368,7 @@ public class Nomina {
     }
 
     public void setNumeroDiasNomina(int numeroDiasNomina) {
-        this.numeroDiasNomina = 30;
+        this.numeroDiasNomina = numeroDiasNomina;
     }
 
     public double getResultadoSalarioBase() {

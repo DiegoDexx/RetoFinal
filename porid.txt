@@ -1,0 +1,17 @@
+  
+//CONTROLLER PARA GENERAR NOMINA POR ID
+
+
+
+@GetMapping("/nominas/{id}")
+    public ResponseEntity<List<Nomina>> NominaInfoById(@PathVariable("id") Long id)throws FileNotFoundException, DocumentException {
+          
+        List<Nomina> nomi = servicenomina.crearPorId(id);
+        if (nomi == null) {
+            return null;
+        } else {
+            servicenomina.crearPorId(id); //GENERA EL PDF
+            return ResponseEntity.ok(servicenomina.crearPorId(id));
+        }
+    
+    }
